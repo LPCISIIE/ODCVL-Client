@@ -35,4 +35,23 @@ export default function route ($stateProvider) {
       template: require('./app/category/categories.edit.html'),
       controller: 'EditCategoryCtrl'
     })
+    .state('products', {
+      abstract: true,
+      url: '/products'
+    })
+    .state('products.all', {
+      url: '',
+      template: require('./app/product/products.html'),
+      controller: 'ProductsCtrl'
+    })
+    .state('products.add', {
+      url: '/add',
+      template: require('./app/product/products.add.html'),
+      controller: 'AddProductCtrl'
+    })
+    .state('products.edit', {
+      url: '/:id/edit',
+      template: require('./app/product/products.edit.html'),
+      controller: 'EditProductCtrl'
+    })
 }

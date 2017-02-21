@@ -10,6 +10,7 @@ import AuthService from './app/authentication/authentication.service'
 
 import User from './app/user/user'
 import Category from './app/category/category'
+import Product from './app/product/product'
 
 import TopbarDirective from './app/topbar/topbar.directive'
 import FormErrorsDirective from './app/form-errors.directive'
@@ -20,6 +21,9 @@ import HomeController from './app/home/home.controller'
 import CategoriesController from './app/category/categories.controller'
 import AddCategoryController from './app/category/categories.add.controller'
 import EditCategoryController from './app/category/categories.edit.controller'
+import ProductsController from './app/product/products.controller'
+import AddProductController from './app/product/products.add.controller'
+import EditProductController from './app/product/products.edit.controller'
 
 export default angular.module('app', [resource, router])
   .constant('API', {
@@ -30,6 +34,7 @@ export default angular.module('app', [resource, router])
   .service('AuthService', AuthService)
   .config(config)
   .factory('Category', Category)
+  .factory('Product', Product)
   .directive('topbar', TopbarDirective)
   .directive('formErrors', FormErrorsDirective)
   .controller('LoginCtrl', LoginController)
@@ -38,3 +43,6 @@ export default angular.module('app', [resource, router])
   .controller('CategoriesCtrl', CategoriesController)
   .controller('AddCategoryCtrl', AddCategoryController)
   .controller('EditCategoryCtrl', EditCategoryController)
+  .controller('ProductsCtrl', ProductsController)
+  .controller('AddProductCtrl', AddProductController)
+  .controller('EditProductCtrl', EditProductController)
