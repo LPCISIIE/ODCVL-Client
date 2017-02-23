@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Ajouter un matériel</h1>
+  </div>
+  <form>
+    <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
+      <label for="name">Nom</label>
+      <input ng-model="product.name" type="text" id="name" class="form-control">
+      <form-errors errors="errors.name"></form-errors>
+    </div>
+    <div class="form-group" ng-class="errors.category_id ? 'has-error' : ''">
+      <label for="category_id">Catégorie</label>
+      <select ng-model="product.category_id" id="category_id" class="form-control">
+        <option ng-repeat="category in categories" ng-value="category.id">{{ category.name }}</option>
+      </select>
+      <form-errors errors="errors.category_id"></form-errors>
+    </div>
+    <input ng-click="save()" type="submit" value="Créer" class="btn btn-success">
+  </form>
+</div>
