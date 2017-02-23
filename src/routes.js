@@ -16,4 +16,23 @@ export default function route ($stateProvider) {
       template: require('./app/authentication/register.html'),
       controller: 'RegisterCtrl'
     })
+    .state('categories', {
+      abstract: true,
+      url: '/categories'
+    })
+    .state('categories.all', {
+      url: '',
+      template: require('./app/category/categories.html'),
+      controller: 'CategoriesCtrl'
+    })
+    .state('categories.add', {
+      url: '/add',
+      template: require('./app/category/categories.add.html'),
+      controller: 'AddCategoryCtrl'
+    })
+    .state('categories.edit', {
+      url: '/:id/edit',
+      template: require('./app/category/categories.edit.html'),
+      controller: 'EditCategoryCtrl'
+    })
 }
