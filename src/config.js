@@ -1,19 +1,9 @@
 import route from './routes'
+import JWTInterceptor from './app/authentication/jwt.interceptor'
 
 export default function config ($httpProvider, $stateProvider, $urlRouterProvider) {
   // Add Authorization header with JWT if user is authenticated
-  $httpProvider.interceptors.push(['JWTService', (JWTService) => {
-    return {
-      request: (config) => {
-        let token = JWTService.getToken()
-        if (token != null) {
-          config.headers.authorization = 'Bearer ' + token
-        }
-
-        return config
-      }
-    }
-  }])
+  $httpProvider.interceptors.push(JWTInterceptor)
 
   // Application routes
   route($stateProvider)

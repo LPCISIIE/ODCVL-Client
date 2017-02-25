@@ -1,4 +1,7 @@
 
+import GuestMiddleware from './app/middleware/guest.middleware'
+import AuthMiddleware from './app/middleware/auth.middleware'
+
 export default function route ($stateProvider) {
   $stateProvider
     .state('home', {
@@ -9,16 +12,19 @@ export default function route ($stateProvider) {
     .state('login', {
       url: '/login',
       template: require('./app/authentication/login.html'),
-      controller: 'LoginCtrl'
+      controller: 'LoginCtrl',
+      onEnter: GuestMiddleware
     })
     .state('register', {
       url: '/register',
       template: require('./app/authentication/register.html'),
-      controller: 'RegisterCtrl'
+      controller: 'RegisterCtrl',
+      onEnter: GuestMiddleware
     })
     .state('categories', {
       abstract: true,
-      url: '/categories'
+      url: '/categories'/* ,
+      onEnter: AuthMiddleware */
     })
     .state('categories.all', {
       url: '',
@@ -37,7 +43,8 @@ export default function route ($stateProvider) {
     })
     .state('products', {
       abstract: true,
-      url: '/products'
+      url: '/products'/* ,
+      onEnter: AuthMiddleware */
     })
     .state('products.all', {
       url: '',
