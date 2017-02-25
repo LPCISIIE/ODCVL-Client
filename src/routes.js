@@ -1,6 +1,6 @@
 
 import GuestMiddleware from './app/middleware/guest.middleware'
-import AuthMiddleware from './app/middleware/auth.middleware'
+// import AuthMiddleware from './app/middleware/auth.middleware'
 
 export default function route ($stateProvider) {
   $stateProvider
