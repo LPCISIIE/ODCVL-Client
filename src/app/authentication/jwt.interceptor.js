@@ -1,5 +1,5 @@
 
-export default function JWTInterceptor (JWTService, $injector) {
+export default function JWTInterceptor ($injector, $q, JWTService) {
   return {
     request: config => {
       let token = JWTService.getAccessToken()
@@ -18,8 +18,10 @@ export default function JWTInterceptor (JWTService, $injector) {
           AuthService.logout()
         }
       }
+
+      return $q.reject(rejection)
     }
   }
 }
 
-JWTInterceptor.$inject = ['JWTService', '$injector']
+JWTInterceptor.$inject = ['$injector', '$q', 'JWTService']
