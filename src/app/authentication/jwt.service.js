@@ -1,31 +1,31 @@
 
 export default class JWTService {
   constructor ($window) {
-    this.$window = $window
+    this.localStorage = $window.localStorage
   }
 
   setAccessToken (token) {
-    this.$window.localStorage.setItem('access_token', token)
+    this.localStorage.setItem('access_token', token)
   }
 
   setRefreshToken (token) {
-    this.$window.localStorage.setItem('refresh_token', token)
+    this.localStorage.setItem('refresh_token', token)
   }
 
   getAccessToken () {
-    return this.$window.localStorage.getItem('access_token')
+    return this.localStorage.getItem('access_token')
   }
 
   getRefreshToken () {
-    return this.$window.localStorage.getItem('refresh_token')
+    return this.localStorage.getItem('refresh_token')
   }
 
   removeAccessToken () {
-    this.$window.localStorage.removeItem('access_token')
+    this.localStorage.removeItem('access_token')
   }
 
   removeRefreshToken () {
-    this.$window.localStorage.removeItem('refresh_token')
+    this.localStorage.removeItem('refresh_token')
   }
 
   removeTokens () {

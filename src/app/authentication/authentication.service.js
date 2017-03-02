@@ -1,14 +1,22 @@
 
 export default class AuthService {
-  constructor ($rootScope, JWTService, User) {
+  constructor ($rootScope, $window, JWTService, User) {
     this.$rootScope = $rootScope
+    this.localStorage = $window.localStorage
     this.JWTService = JWTService
     this.User = User
+  }
+
+  getUser () {
+    let user = this.localStorage.getItem('user')
+
+    return user ? JSON.parse(user) : null
   }
 
   check () {
     return this.User.me(user => {
       this.$rootScope.user = user
+      this.localStorage.setItem('user', JSON.stringify(user))
     }).$promise
   }
 
@@ -33,10 +41,10 @@ export default class AuthService {
   }
 
   logout () {
-    // User.logout()
     this.$rootScope.user = undefined
+    this.localStorage.removeItem('user')
     this.JWTService.removeTokens()
   }
 }
 
-AuthService.$inject = ['$rootScope', 'JWTService', 'User']
+AuthService.$inject = ['$rootScope', '$window', 'JWTService', 'User']
