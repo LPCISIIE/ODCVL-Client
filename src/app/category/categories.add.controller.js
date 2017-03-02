@@ -5,7 +5,7 @@ export default function AddCategoryController ($scope, $state, Category) {
     parent_id: 0
   }
 
-  Category.query((categories) => {
+  Category.query(categories => {
     $scope.categories = categories
     $scope.categories.unshift({
       id: 0,
@@ -16,7 +16,7 @@ export default function AddCategoryController ($scope, $state, Category) {
   $scope.save = () => {
     Category.save($scope.category, () => {
       $state.go('categories.all')
-    }, (response) => {
+    }, response => {
       $scope.errors = response.data
     })
   }

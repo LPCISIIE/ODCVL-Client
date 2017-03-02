@@ -5,11 +5,11 @@ export default function AddProductController ($scope, $state, Product, Category)
     category_id: 0
   }
 
-  Category.query((categories) => {
+  Category.query(categories => {
     let allCategories = []
-    categories.forEach((category) => {
+    categories.forEach(category => {
       allCategories.push(category)
-      category.sub_categories.forEach((subCategory) => {
+      category.sub_categories.forEach(subCategory => {
         allCategories.push(subCategory)
       })
     })
@@ -25,7 +25,7 @@ export default function AddProductController ($scope, $state, Product, Category)
   $scope.save = () => {
     Product.save($scope.product, () => {
       $state.go('products.all')
-    }, (response) => {
+    }, response => {
       $scope.errors = response.data
     })
   }
