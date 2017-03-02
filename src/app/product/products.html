@@ -17,6 +17,7 @@
         <td>{{ product.name }}</td>
         <td>{{ product.categories[0].name }}</td>
         <td class="text-right">
+          <a ui-sref="items.add({ product_id: product.id })" class="btn btn-success btn-xs">Ajouter un article</a>
           <a ui-sref="products.edit({ id: product.id })" class="btn btn-warning btn-xs">
             <span class="glyphicon glyphicon-edit"></span>
           </a>

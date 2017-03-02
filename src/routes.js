@@ -61,4 +61,19 @@ export default function route ($stateProvider) {
       template: require('./app/product/products.edit.html'),
       controller: 'EditProductCtrl'
     })
+    .state('items', {
+      abstract: true,
+      url: '/items'/* ,
+       onEnter: AuthMiddleware */
+    })
+    .state('items.all', {
+      url: '',
+      template: require('./app/item/items.html'),
+      controller: 'ItemsCtrl'
+    })
+    .state('items.add', {
+      url: '/add?product_id',
+      template: require('./app/item/items.add.html'),
+      controller: 'AddItemCtrl'
+    })
 }
