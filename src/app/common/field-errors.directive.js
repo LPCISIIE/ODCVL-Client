@@ -1,5 +1,5 @@
 
-export default function FormErrorsDirective () {
+export default function FieldErrorsDirective () {
   return {
     restrict: 'AE',
     template: `

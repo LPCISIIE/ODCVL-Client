@@ -1,4 +1,4 @@
-import './assets/app.scss'
+import './assets/scss/app.scss'
 
 import angular from 'angular'
 import resource from 'angular-resource'
@@ -13,7 +13,8 @@ import Category from './app/category/category'
 import Product from './app/product/product'
 
 import TopbarDirective from './app/topbar/topbar.directive'
-import FormErrorsDirective from './app/form-errors.directive'
+import FieldErrorsDirective from './app/common/field-errors.directive'
+import HasErrorDirective from './app/common/has-error.directive'
 
 import LoginController from './app/authentication/login.controller'
 import RegisterController from './app/authentication/register.controller'
@@ -36,7 +37,8 @@ export default angular.module('app', [resource, router])
   .factory('Category', Category)
   .factory('Product', Product)
   .directive('topbar', TopbarDirective)
-  .directive('formErrors', FormErrorsDirective)
+  .directive('fieldErrors', FieldErrorsDirective)
+  .directive('hasError', HasErrorDirective)
   .controller('LoginCtrl', LoginController)
   .controller('RegisterCtrl', RegisterController)
   .controller('HomeCtrl', HomeController)
@@ -46,3 +48,10 @@ export default angular.module('app', [resource, router])
   .controller('ProductsCtrl', ProductsController)
   .controller('AddProductCtrl', AddProductController)
   .controller('EditProductCtrl', EditProductController)
+  .run(['$transitions', $transitions => {
+    $transitions.onSuccess({}, trans => {
+      if (trans.injector().get('JWTService').getAccessToken()) {
+        trans.injector().get('AuthService').check()
+      }
+    })
+  }])

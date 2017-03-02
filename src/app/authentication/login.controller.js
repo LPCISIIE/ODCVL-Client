@@ -1,14 +1,14 @@
 
-export default function LoginController ($scope, AuthService) {
+export default function LoginController ($scope, $state, AuthService) {
   $scope.user = {}
 
   $scope.login = () => {
-    AuthService.login($scope.user).then((response) => {
-      // Redirect
-    }, (response) => {
-      console.log(response)
+    AuthService.login(this.user).then(() => {
+      $state.go('home')
+    }, response => {
+      $scope.errors = response.data
     })
   }
 }
 
-LoginController.$inject = ['$scope', 'AuthService']
+LoginController.$inject = ['$scope', '$state', 'AuthService']

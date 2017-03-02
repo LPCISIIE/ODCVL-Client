@@ -1,31 +1,36 @@
 
 export default class JWTService {
   constructor ($window) {
-    this.$window = $window
+    this.localStorage = $window.localStorage
   }
 
-  setToken (token) {
-    this.$window.localStorage.setItem('token_date', Date.now())
-    this.$window.localStorage.setItem('token', token)
+  setAccessToken (token) {
+    this.localStorage.setItem('access_token', token)
   }
 
-  getToken () {
-    let date = this.$window.localStorage.getItem('token_date')
-
-    // On teste la validité du token
-    // Si la dernière requête était il y a plus de 30 min (1800000 ms)
-    // on supprime le token, sinon on actualise la date
-    if (date && Date.now() - parseInt(date) > 1800000) {
-      this.$window.localStorage.removeItem('token')
-    } else {
-      this.$window.localStorage.setItem('token_date', Date.now())
-    }
-
-    return this.$window.localStorage.getItem('token')
+  setRefreshToken (token) {
+    this.localStorage.setItem('refresh_token', token)
   }
 
-  removeToken () {
-    this.$window.localStorage.removeItem('token')
+  getAccessToken () {
+    return this.localStorage.getItem('access_token')
+  }
+
+  getRefreshToken () {
+    return this.localStorage.getItem('refresh_token')
+  }
+
+  removeAccessToken () {
+    this.localStorage.removeItem('access_token')
+  }
+
+  removeRefreshToken () {
+    this.localStorage.removeItem('refresh_token')
+  }
+
+  removeTokens () {
+    this.removeAccessToken()
+    this.removeRefreshToken()
   }
 }
 
