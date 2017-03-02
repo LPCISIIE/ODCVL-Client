@@ -1,15 +1,15 @@
 
 export default function EditProductController ($scope, $state, $stateParams, Product, Category) {
-  Product.get({ id: $stateParams.id }, (product) => {
+  Product.get({ id: $stateParams.id }, product => {
     $scope.product = product
     $scope.product.category_id = product.categories[0].id
   })
 
-  Category.query((categories) => {
+  Category.query(categories => {
     let allCategories = []
-    categories.forEach((category) => {
+    categories.forEach(category => {
       allCategories.push(category)
-      category.sub_categories.forEach((subCategory) => {
+      category.sub_categories.forEach(subCategory => {
         allCategories.push(subCategory)
       })
     })
@@ -25,7 +25,7 @@ export default function EditProductController ($scope, $state, $stateParams, Pro
   $scope.save = () => {
     Product.update($scope.product, () => {
       $state.go('products.all')
-    }, (response) => {
+    }, response => {
       $scope.errors = response.data
     })
   }

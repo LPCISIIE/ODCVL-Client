@@ -3,17 +3,17 @@
     <h1>Modifier une catégorie</h1>
   </div>
   <form>
-    <div class="form-group" ng-class="errors.name ? 'has-error' : ''">
+    <div class="form-group" has-error="errors.name">
       <label for="name">Nom</label>
       <input ng-model="category.name" type="text" id="name" class="form-control">
-      <form-errors errors="errors.name"></form-errors>
+      <field-errors errors="errors.name"></field-errors>
     </div>
-    <div class="form-group" ng-class="errors.parent_id ? 'has-error' : ''">
+    <div class="form-group" has-error="errors.parent_id">
       <label for="parent_category">Catégorie parente</label>
       <select ng-model="category.parent_id" id="parent_category" class="form-control">
         <option ng-repeat="c in categories" ng-value="c.id">{{ c.name }}</option>
       </select>
-      <form-errors errors="errors.parent_id"></form-errors>
+      <field-errors errors="errors.parent_id"></field-errors>
     </div>
     <input ng-click="save()" type="submit" value="Modifier" class="btn btn-success">
   </form>

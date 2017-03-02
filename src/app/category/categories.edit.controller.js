@@ -1,10 +1,10 @@
 
 export default function AddCategoryController ($scope, $state, $stateParams, Category) {
-  Category.get({ id: $stateParams.id }, (category) => {
+  Category.get({ id: $stateParams.id }, category => {
     $scope.category = category
   })
 
-  Category.query((categories) => {
+  Category.query(categories => {
     $scope.categories = categories
     $scope.categories.unshift({
       id: 0,
@@ -15,7 +15,7 @@ export default function AddCategoryController ($scope, $state, $stateParams, Cat
   $scope.save = () => {
     Category.update($scope.category, () => {
       $state.go('categories.all')
-    }, (response) => {
+    }, response => {
       $scope.errors = response.data
     })
   }
