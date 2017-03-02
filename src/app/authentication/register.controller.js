@@ -3,7 +3,7 @@ export default function RegisterController ($scope, $state, AuthService) {
   $scope.user = {}
 
   $scope.register = () => {
-    AuthService.register(this.user).then(() => {
+    AuthService.register($scope.user).then(() => {
       $state.go('login')
     }, response => {
       $scope.errors = response.data
