@@ -7,12 +7,15 @@
       <div class="col-md-6">
         <label for="code">Code barre</label>
         <div class="input-group" has-error="errors.code">
-          <input ng-model="item.code" type="text" id="code" class="form-control">
+          <input ng-change="displayBarCode()" ng-model="item.code" type="text" id="code" class="form-control">
           <div class="input-group-btn">
             <button ng-click="generateBarCode()" class="btn btn-default">Générer code barre</button>
           </div>
         </div>
         <field-errors errors="errors.code"></field-errors>
+      </div>
+      <div class="col-md-6">
+        <img class="pull-right" id="barcode" />
       </div>
     </div>
 
