@@ -73,6 +73,7 @@ export default function route ($stateProvider) {
     })
     .state('items.add', {
       url: '/add?product_id',
+      reloadOnSearch: false,
       template: require('./app/item/items.add.html'),
       controller: 'AddItemCtrl'
     })

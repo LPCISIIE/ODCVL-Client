@@ -44,6 +44,7 @@ export default function AddItemController ($scope, $state, $stateParams, Item, C
 
   $scope.updateFilter = (product) => {
     $scope.search = product.name
+    $state.go('.', { product_id: product.id })
   }
 
   $scope.checked = () => {
