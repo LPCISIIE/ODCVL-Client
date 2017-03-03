@@ -47,11 +47,16 @@ export default function AddItemController ($scope, $state, $stateParams, Item, C
     $state.go('.', { product_id: product.id })
   }
 
-  $scope.checked = () => {
-    console.log('Checked')
+  $scope.formatDate = (date) => {
+    if (date) {
+      return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+    }
+
+    return ''
   }
 
   $scope.save = () => {
+    $scope.item.purchased_at = $scope.formatDate($scope.item.purchased_at)
     Item.save($scope.item, () => {
       $state.go('items.all')
     }, response => {

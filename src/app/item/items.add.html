@@ -4,14 +4,21 @@
   </div>
   <form>
     <div class="form-group" has-error="errors.code">
-      <label for="code">Nom</label>
+      <label for="code">Code barre</label>
       <input ng-model="item.code" type="text" id="code" class="form-control">
       <field-errors errors="errors.code"></field-errors>
     </div>
 
-    <div class="form-group" has-error="errors.purchased_at">
-      <label for="purchased_at">Acheté le</label>
-      <input ng-model="item.purchased_at" type="text" id="purchased_at" class="form-control">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="purchased_at">Date d'achat</label>
+        <p class="input-group">
+          <input type="text" id="purchased_at" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="item.purchased_at" is-open="open" close-text="Fermer" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open = true"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
     </div>
 
     <hr>
