@@ -12,7 +12,9 @@
             <button ng-click="generateBarCode()" class="btn btn-default">Générer code barre</button>
           </div>
         </div>
-        <field-errors errors="errors.code"></field-errors>
+        <div class="has-error">
+          <field-errors errors="errors.code"></field-errors>
+        </div>
       </div>
       <div class="col-md-6">
         <img class="pull-right" id="barcode" />
@@ -22,12 +24,15 @@
     <div class="row">
       <div class="col-md-6">
         <label for="purchased_at">Date d'achat</label>
-        <p class="input-group">
+        <p class="input-group" has-error="errors.purchased_at">
           <input type="text" id="purchased_at" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="item.purchased_at" is-open="open" close-text="Fermer" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open = true"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
         </p>
+        <div class="has-error">
+          <field-errors errors="errors.purchased_at"></field-errors>
+        </div>
       </div>
     </div>
 
@@ -80,6 +85,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="has-error">
+      <field-errors errors="errors.product_id"></field-errors>
+    </div>
 
     <input ng-click="save()" type="submit" value="Valider" class="btn btn-success">
   </form>
