@@ -87,6 +87,7 @@ export default function AddItemController ($scope, $state, $stateParams, Item, C
       $state.go('items.all')
     }, response => {
       $scope.errors = response.data
+      console.log($scope.errors)
     })
   }
 }
