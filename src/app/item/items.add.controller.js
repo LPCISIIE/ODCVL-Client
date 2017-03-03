@@ -55,6 +55,10 @@ export default function AddItemController ($scope, $state, $stateParams, Item, C
     return ''
   }
 
+  $scope.generateBarCode = () => {
+    $scope.item.code = Math.ceil(Math.random() * Math.pow(10, 13))
+  }
+
   $scope.save = () => {
     $scope.item.purchased_at = $scope.formatDate($scope.item.purchased_at)
     Item.save($scope.item, () => {
