@@ -1,0 +1,12 @@
+.navbar{
+    margin-bottom: unset !important;
+}
+
+  .my-input {
+    transition:all linear 0.5s;
+    background: transparent;
+  }
+  .my-input.ng-invalid {
+    color:white;
+    background: red;
+  }

@@ -33,7 +33,7 @@ import AddItemController from './app/item/items.add.controller'
 
 export default angular.module('app', [resource, router, uiBootstrap])
   .constant('API', {
-    url: 'http://localhost/private/ODCVL/public'
+    url: 'http://localhost/ODCVL/public'
   })
   .factory('User', User)
   .service('JWTService', JWTService)

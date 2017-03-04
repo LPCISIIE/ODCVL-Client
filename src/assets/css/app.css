@@ -1,0 +1,19 @@
+.table .btn {
+  margin-right: 5px; }
+
+.sub-category {
+  display: inline-block;
+  padding-left: 50px; }
+
+/*# sourceMappingURL=app.css.map */
+
+.list-group-item
+{
+  overflow:hidden;  
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
