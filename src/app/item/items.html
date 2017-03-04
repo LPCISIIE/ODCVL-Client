@@ -7,7 +7,7 @@
       <tr>
         <th>#</th>
         <th>Code</th>
-        <th>Acheté le</th>
+        <th>Date d'achat</th>
         <th class="text-right">Actions</th>
       </tr>
     </thead>
@@ -15,7 +15,7 @@
       <tr ng-repeat="item in items">
         <th>{{ $index + 1 }}</th>
         <td>{{ item.code }}</td>
-        <td>{{ item.purchased_at }}</td>
+        <td>{{ item.purchased_at | date:'dd/MM/yyyy' }}</td>
         <td class="text-right">
           <a ui-sref="items.edit({ id: item.id })" class="btn btn-warning btn-xs">
             <span class="glyphicon glyphicon-edit"></span>

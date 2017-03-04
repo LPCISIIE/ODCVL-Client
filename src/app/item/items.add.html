@@ -3,15 +3,37 @@
     <h1>Ajouter un article</h1>
   </div>
   <form>
-    <div class="form-group" has-error="errors.code">
-      <label for="code">Nom</label>
-      <input ng-model="item.code" type="text" id="code" class="form-control">
-      <field-errors errors="errors.code"></field-errors>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="code">Code barre</label>
+        <div class="input-group" has-error="errors.code">
+          <input ng-change="displayBarCode()" ng-model="item.code" type="text" id="code" class="form-control">
+          <div class="input-group-btn">
+            <button ng-click="generateBarCode()" class="btn btn-default">Générer code barre</button>
+          </div>
+        </div>
+        <div class="has-error">
+          <field-errors errors="errors.code" first="true"></field-errors>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img class="pull-right" id="barcode" />
+      </div>
     </div>
 
-    <div class="form-group" has-error="errors.purchased_at">
-      <label for="purchased_at">Acheté le</label>
-      <input ng-model="item.purchased_at" type="text" id="purchased_at" class="form-control">
+    <div class="row">
+      <div class="col-md-6">
+        <label for="purchased_at">Date d'achat</label>
+        <p class="input-group" has-error="errors.purchased_at">
+          <input type="text" id="purchased_at" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="item.purchased_at" is-open="open" close-text="Fermer" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open = true"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+        <div class="has-error">
+          <field-errors errors="errors.purchased_at" first="true"></field-errors>
+        </div>
+      </div>
     </div>
 
     <hr>
@@ -63,6 +85,9 @@
         </tr>
       </tbody>
     </table>
+    <div class="has-error">
+      <field-errors errors="errors.product_id"></field-errors>
+    </div>
 
     <input ng-click="save()" type="submit" value="Valider" class="btn btn-success">
   </form>

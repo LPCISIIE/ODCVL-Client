@@ -6,6 +6,8 @@ export default function HasErrorDirective () {
       scope.$watch(attrs.hasError, (value) => {
         if (value) {
           element.addClass('has-error')
+        } else {
+          element.removeClass('has-error')
         }
       })
     }
