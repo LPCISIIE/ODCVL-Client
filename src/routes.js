@@ -41,6 +41,26 @@ export default function route ($stateProvider) {
       template: require('./app/category/categories.edit.html'),
       controller: 'EditCategoryCtrl'
     })
+      .state('clients', {
+        abstract: true,
+        url: '/clients'/* ,
+         onEnter: AuthMiddleware */
+      })
+      .state('clients.all', {
+        url: '',
+        template: require('./app/client/clients.html'),
+        controller: 'ClientsCtrl'
+      })
+      .state('clients.add', {
+        url: '/add',
+        template: require('./app/client/clients.add.html'),
+        controller: 'AddClientCtrl'
+      })
+      .state('clients.edit', {
+        url: '/:id/edit',
+        template: require('./app/client/clients.edit.html'),
+        controller: 'EditClientCtrl'
+      })
     .state('products', {
       abstract: true,
       url: '/products'/* ,

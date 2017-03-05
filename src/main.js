@@ -14,6 +14,7 @@ import Category from './app/category/category'
 import CategoryProduct from './app/category/category.product'
 import Product from './app/product/product'
 import Item from './app/item/item'
+import Client from './app/client/client'
 
 import TopbarDirective from './app/topbar/topbar.directive'
 import FieldErrorsDirective from './app/common/field-errors.directive'
@@ -25,6 +26,9 @@ import HomeController from './app/home/home.controller'
 import CategoriesController from './app/category/categories.controller'
 import AddCategoryController from './app/category/categories.add.controller'
 import EditCategoryController from './app/category/categories.edit.controller'
+import ClientsController from './app/client/clients.controller'
+import AddClientController from './app/client/clients.add.controller'
+import EditClientController from './app/client/clients.edit.controller'
 import ProductsController from './app/product/products.controller'
 import AddProductController from './app/product/products.add.controller'
 import EditProductController from './app/product/products.edit.controller'
@@ -43,6 +47,7 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .factory('CategoryProduct', CategoryProduct)
   .factory('Product', Product)
   .factory('Item', Item)
+  .factory('Client', Client)
   .directive('topbar', TopbarDirective)
   .directive('fieldErrors', FieldErrorsDirective)
   .directive('hasError', HasErrorDirective)
@@ -52,6 +57,9 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .controller('CategoriesCtrl', CategoriesController)
   .controller('AddCategoryCtrl', AddCategoryController)
   .controller('EditCategoryCtrl', EditCategoryController)
+  .controller('ClientsCtrl', ClientsController)
+  .controller('AddClientCtrl', AddClientController)
+  .controller('EditClientsCtrl', EditClientController)
   .controller('ProductsCtrl', ProductsController)
   .controller('AddProductCtrl', AddProductController)
   .controller('EditProductCtrl', EditProductController)
