@@ -25,6 +25,9 @@ import HomeController from './app/home/home.controller'
 import CategoriesController from './app/category/categories.controller'
 import AddCategoryController from './app/category/categories.add.controller'
 import EditCategoryController from './app/category/categories.edit.controller'
+import ClientsController from './app/client/clients.controller'
+import AddClientController from './app/client/clients.add.controller'
+import EditClientController from './app/client/clients.edit.controller'
 import ProductsController from './app/product/products.controller'
 import AddProductController from './app/product/products.add.controller'
 import EditProductController from './app/product/products.edit.controller'
@@ -52,6 +55,9 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .controller('CategoriesCtrl', CategoriesController)
   .controller('AddCategoryCtrl', AddCategoryController)
   .controller('EditCategoryCtrl', EditCategoryController)
+  .controller('ClientsCtrl', ClientsController)
+  .controller('AddClientsCtrl', AddClientController)
+  .controller('EditClientsCtrl', EditClientController)
   .controller('ProductsCtrl', ProductsController)
   .controller('AddProductCtrl', AddProductController)
   .controller('EditProductCtrl', EditProductController)
