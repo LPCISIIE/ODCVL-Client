@@ -8,6 +8,7 @@ import uiBootstrap from 'angular-ui-bootstrap'
 import config from './config'
 import JWTService from './app/authentication/jwt.service'
 import AuthService from './app/authentication/authentication.service'
+import FlashService from './app/authentication/flash.service'
 
 import User from './app/user/user'
 import Category from './app/category/category'
@@ -41,6 +42,7 @@ export default angular.module('app', [resource, router, uiBootstrap])
   })
   .factory('User', User)
   .service('JWTService', JWTService)
+  .service('FlashService', FlashService)
   .service('AuthService', AuthService)
   .config(config)
   .factory('Category', Category)

@@ -1,5 +1,5 @@
 
-export default function ClientsController ($scope, Client) {
+export default function ClientsController ($scope, Client, FlashService) {
   Client.query(clients => {
     $scope.clients = clients
   })
@@ -7,10 +7,11 @@ export default function ClientsController ($scope, Client) {
   $scope.delete = (client) => {
     Client.delete(client, () => {
       Client.query(clients => {
+        FlashService.Success('Client supprimé avec succès ')
         $scope.clients = clients
       })
     })
   }
 }
 
-ClientsController.$inject = ['$scope', 'Client']
+ClientsController.$inject = ['$scope', 'Client', 'FlashService']
