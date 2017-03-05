@@ -47,15 +47,16 @@
             <td>{{ client.email }}</td>
             <td class="text-right">
                 <a  class="btn btn-success btn-xs">
-                    <span class="glyphicon glyphicon-plus"></span> Ajouter un client
+                    <span class="glyphicon glyphicon-plus"></span> Ajouter une location
                 </a>
-                <a  class="btn btn-warning btn-xs">
+                <a  ui-sref="clients.edit({ id: client.id })" class="btn btn-warning btn-xs">
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
                 <button ng-click="delete(client)" class="btn btn-danger btn-xs">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </td>
+
         </tr>
         </tbody>
     </table>

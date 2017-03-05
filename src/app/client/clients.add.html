@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Ajouter un client</h1>
+    </div>
+    <form>
+        <div class="form-group" has-error="errors.nom">
+            <label for="nom">Nom</label>
+            <input ng-model="client.nom" type="text" id="nom" class="form-control">
+            <field-errors errors="errors.nom"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.prenom">
+            <label for="nom">Prénom</label>
+            <input ng-model="client.prenom" type="text" id="prenom" class="form-control">
+            <field-errors errors="errors.prenom"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.organisme">
+            <label for="organisme">Organisme</label>
+            <input ng-model="client.organisme" type="text" id="organisme" class="form-control">
+            <field-errors errors="errors.organisme"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.adresse">
+            <label for="adresse">Adresse</label>
+            <input ng-model="client.adresse" type="text" id="adresse" class="form-control">
+            <field-errors errors="errors.adresse"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.telephone">
+            <label for="telephone">Téléphone</label>
+            <input ng-model="client.telephone" type="text" id="telephone" class="form-control">
+            <field-errors errors="errors.telephone"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.email">
+            <label for="email">Email</label>
+            <input ng-model="client.email" type="text" id="email" class="form-control">
+            <field-errors errors="errors.email"></field-errors>
+        </div>
+        <input ng-click="save()" type="submit" value="Créer" class="btn btn-success">
+    </form>
+</div>
