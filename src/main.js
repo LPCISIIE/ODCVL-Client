@@ -14,6 +14,7 @@ import Category from './app/category/category'
 import CategoryProduct from './app/category/category.product'
 import Product from './app/product/product'
 import Item from './app/item/item'
+import Client from './app/client/client'
 
 import TopbarDirective from './app/topbar/topbar.directive'
 import FieldErrorsDirective from './app/common/field-errors.directive'
@@ -46,6 +47,7 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .factory('CategoryProduct', CategoryProduct)
   .factory('Product', Product)
   .factory('Item', Item)
+  .factory('Client', Client)
   .directive('topbar', TopbarDirective)
   .directive('fieldErrors', FieldErrorsDirective)
   .directive('hasError', HasErrorDirective)
