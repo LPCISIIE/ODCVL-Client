@@ -1,5 +1,5 @@
 
-export default function AddClientController ($scope, $state, Client) {
+export default function AddClientController ($scope, $state, Client, FlashService) {
   $scope.client = {
     nom: '',
     prenom: '',
@@ -20,10 +20,11 @@ export default function AddClientController ($scope, $state, Client) {
   $scope.save = () => {
     Client.save($scope.client, () => {
       $state.go('clients.all')
+      FlashService.Success('client créé avec succès ')
     }, response => {
       $scope.errors = response.data
     })
   }
 }
 
-AddClientController.$inject = ['$scope', '$state', 'Client']
+AddClientController.$inject = ['$scope', '$state', 'Client', 'FlashService']
