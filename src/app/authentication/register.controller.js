@@ -1,7 +1,7 @@
 
-export default function RegisterController ($scope, $rootScope, $state, AuthService) {
+export default function RegisterController ($scope, $state, AuthService) {
   $scope.user = {}
-  $rootScope.logged = false
+
   $scope.register = () => {
     AuthService.register($scope.user).then(() => {
       $state.go('login')
@@ -11,4 +11,4 @@ export default function RegisterController ($scope, $rootScope, $state, AuthServ
   }
 }
 
-RegisterController.$inject = ['$scope', '$rootScope', '$state', 'AuthService']
+RegisterController.$inject = ['$scope', '$state', 'AuthService']

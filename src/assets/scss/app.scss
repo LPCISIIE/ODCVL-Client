@@ -1,4 +1,33 @@
 
-body {
-  // padding-top: 70px;
+.navbar {
+  margin-bottom: unset !important;
+}
+
+.my-input {
+  transition: all linear 0.5s;
+  background: transparent;
+
+  &.ng-invalid {
+    color: white;
+    background: red;
+  }
+}
+
+.table .btn {
+  margin-right: 5px;
+}
+
+.sub-category {
+  display: inline-block;
+  padding-left: 50px;
+}
+
+.list-group-item {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #FFF;
+  border: 1px solid #DDD;
 }

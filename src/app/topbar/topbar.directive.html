@@ -1,88 +1,8 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">ODCVL </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-      <ul class="nav navbar-nav">
-        <li  class="dropdown"  >
-          <a  href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Locations<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            <li><a href="">Créer</a></li>
-            <li><a href="">Liste</a></li>
-          </ul>
-        </li>
-
-
-        <li  class="dropdown" >
-          <a  href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Stock<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            <li><a ui-sref="categories.all">Catégories</a></li>
-            <li><a ui-sref="products.all">Matériels</a></li>
-            <li><a ui-sref="items.all">Articles</a></li>
-          </ul>
-        </li>
-
-
-        <li  class="dropdown">
-          <a  href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrées<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            <li><a href="">Créer</a></li>
-            <li><a href="">Liste</a></li>
-          </ul>
-        </li>
-        <li  class="dropdown" >
-          <a  href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sorties<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            <li><a href="">Créer</a></li>
-            <li><a href="">Liste</a></li>
-          </ul>
-        </li>
-        <li ng-if="$root.msg === true;" class="dropdown" ng-class="{ active: isActive('/posts')}"  >
-          <a  href="#!/posts" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts<span class="caret"></span></a>
-        </li>
-      </ul>
-
-
-      <ul class="nav navbar-nav navbar-right" >
-
-
-
-        <li ng-if="!logged" ui-sref="register"> <a ui-sref="register">Inscription</a></li>
-        <li ng-show="!logged" ui-sref="login"> <a ui-sref="login">Connexion</a></li>
-
-
-
-        <li ng-if="logged" class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }}<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-
-            <li><a href="">Profil</a></li>
-            <li><a ng-click="logout()" target="_self">Déconnexion</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<!--
-<nav class="navbar navbar-default navbar-static-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -90,22 +10,55 @@
       </button>
       <a class="navbar-brand" ui-sref="home">ODCVL</a>
     </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
 
-      <ul class="nav navbar-nav navbar-right" ng-if="!user">
-        <li><a ui-sref="register">Inscription</a></li>
-        <li><a ui-sref="login">Connexion</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right" ng-if="user">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >{{ user.username }} <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">Locations<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ng-click="logout()">Déconnexion</a></li>
+            <li><a href="">Créer</a></li>
+            <li><a href="">Liste</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Stock<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="categories.all">Catégories</a></li>
+            <li><a ui-sref="products.all">Matériels</a></li>
+            <li><a ui-sref="items.all">Articles</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Entrées<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="">Créer</a></li>
+            <li><a href="">Liste</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">Sorties<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="">Créer</a></li>
+            <li><a href="">Liste</a></li>
           </ul>
         </li>
       </ul>
 
-    </div>
-  </div>
-</nav> -->
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-if="!user"><a ui-sref="register">Inscription</a></li>
+        <li ng-show="!user"><a ui-sref="login">Connexion</a></li>
+        <li ng-if="user" class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="">Profil</a></li>
+            <li><a ng-click="logout()">Déconnexion</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
