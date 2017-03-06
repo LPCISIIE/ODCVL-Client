@@ -1,4 +1,3 @@
-
 import GuestMiddleware from './middleware/guest.middleware'
 // import AuthMiddleware from './middleware/auth.middleware'
 
@@ -24,7 +23,7 @@ export default function route ($stateProvider) {
     .state('categories', {
       abstract: true,
       url: '/categories'/* ,
-      onEnter: AuthMiddleware */
+       onEnter: AuthMiddleware */
     })
     .state('categories.all', {
       url: '',
@@ -41,30 +40,30 @@ export default function route ($stateProvider) {
       template: require('./app/category/categories.edit.html'),
       controller: 'EditCategoryCtrl'
     })
-      .state('clients', {
-        abstract: true,
-        url: '/clients'/* ,
-         onEnter: AuthMiddleware */
-      })
-      .state('clients.all', {
-        url: '',
-        template: require('./app/client/clients.html'),
-        controller: 'ClientsCtrl'
-      })
-      .state('clients.add', {
-        url: '/add',
-        template: require('./app/client/clients.add.html'),
-        controller: 'AddClientCtrl'
-      })
-      .state('clients.edit', {
-        url: '/:id/edit',
-        template: require('./app/client/clients.edit.html'),
-        controller: 'EditClientCtrl'
-      })
+    .state('clients', {
+      abstract: true,
+      url: '/clients'/* ,
+       onEnter: AuthMiddleware */
+    })
+    .state('clients.all', {
+      url: '',
+      template: require('./app/client/clients.html'),
+      controller: 'ClientsCtrl'
+    })
+    .state('clients.add', {
+      url: '/add',
+      template: require('./app/client/clients.add.html'),
+      controller: 'AddClientCtrl'
+    })
+    .state('clients.edit', {
+      url: '/:id/edit',
+      template: require('./app/client/clients.edit.html'),
+      controller: 'EditClientCtrl'
+    })
     .state('products', {
       abstract: true,
       url: '/products'/* ,
-      onEnter: AuthMiddleware */
+       onEnter: AuthMiddleware */
     })
     .state('products.all', {
       url: '',
@@ -97,6 +96,12 @@ export default function route ($stateProvider) {
       template: require('./app/item/items.add.html'),
       controller: 'AddItemCtrl'
     })
+    .state('items.edit', {
+      url: '/:id/edit',
+      reloadOnSearch: false,
+      template: require('./app/item/items.edit.html'),
+      controller: 'EditItemCtrl'
+    })
     .state('locations', {
       abstract: true,
       url: '/locations'
@@ -106,9 +111,9 @@ export default function route ($stateProvider) {
       template: require('./app/location/locations.html'),
       controller: 'LocationController'
     })
-     .state('locations.add', {
-        url: '/add',
-        template: require('./app/location/locations.add.html'),
-        controller: 'AddLocationController'
-      })
+    .state('locations.add', {
+      url: '/add',
+      template: require('./app/location/locations.add.html'),
+      controller: 'AddLocationController'
+    })
 }

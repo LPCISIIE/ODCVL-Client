@@ -10,6 +10,7 @@
     "angular-flash-alert": "^2.4.0",
     "angular-resource": "^1.6.1",
     "angular-ui-bootstrap": "^2.5.0",
+    "angular-ui-grid": "^4.0.2",
     "angular-ui-router": "^1.0.0-rc.1",
     "jsbarcode": "^3.5.8"
   },

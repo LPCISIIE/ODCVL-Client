@@ -1,0 +1,94 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Ajouter un article</h1>
+  </div>
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="code">Code barre</label>
+        <div class="input-group" has-error="errors.code">
+          <input ng-change="displayBarCode()" ng-model="item.code" type="text" id="code" class="form-control">
+          <div class="input-group-btn">
+            <button ng-click="generateBarCode()" class="btn btn-default">Générer code barre</button>
+          </div>
+        </div>
+        <div class="has-error">
+          <field-errors errors="errors.code" first="true"></field-errors>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img class="pull-right" id="barcode" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="purchased_at">Date d'achat</label>
+        <p class="input-group" has-error="errors.purchased_at">
+          <input type="text" id="purchased_at" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="item.purchased_at" is-open="open" close-text="Fermer" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open = true"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+        <div class="has-error">
+          <field-errors errors="errors.purchased_at" first="true"></field-errors>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <h3>Matériel</h3>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="category_id">Filtrer par catégorie</label>
+          <select ng-change="filterProducts()" ng-model="category_id" id="category_id" class="form-control">
+            <option ng-repeat="category in categories" ng-value="category.id">{{ category.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="search">Rechercher</label>
+        <div class="input-group">
+          <input ng-model="search" type="text" id="search" class="form-control" placeholder="Recherche">
+          <div class="input-group-btn">
+            <button class="btn btn-default" ng-click="search = ''">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Catégorie</th>
+          <th class="text-right">Sélectionner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in products | filter : search">
+          <th>{{ product.id }}</th>
+          <td>{{ product.name }}</td>
+          <td>{{ product.categories[0].name }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <label ng-change="updateFilter(product)" ng-class="{ active: item.product_id == product.id }" class="btn btn-primary btn-sm" ng-model="item.product_id" uib-btn-radio="product.id">
+                {{ item.product_id == product.id ? 'Sélectionné' : 'Sélectionner' }}
+              </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="has-error">
+      <field-errors errors="errors.product_id"></field-errors>
+    </div>
+
+    <input ng-click="save()" type="submit" value="Valider" class="btn btn-success">
+  </form>
+</div>

@@ -1,9 +1,10 @@
 
 export default function AddItemController ($scope, $state, $stateParams, BarcodeService, Item, Category, Product, CategoryProduct) {
-  $scope.item = {
-    code: '',
-    product_id: $stateParams.product_id
-  }
+  Item.get({ id: $stateParams.id }, item => {
+    item.purchased_at = new Date(item.purchased_at)
+    $scope.item = item
+    $scope.displayBarCode()
+  })
 
   $scope.category_id = 0
 
@@ -26,14 +27,6 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
 
   Product.query(products => {
     $scope.products = products
-
-    if ($stateParams.product_id) {
-      products.forEach((product) => {
-        if (product.id === parseInt($stateParams.product_id)) {
-          $scope.search = product.name
-        }
-      })
-    }
   })
 
   $scope.filterProducts = () => {
@@ -44,7 +37,6 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
 
   $scope.updateFilter = (product) => {
     $scope.search = product.name
-    $state.go('.', { product_id: product.id })
   }
 
   $scope.formatDate = (date) => {
@@ -68,7 +60,7 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
 
   $scope.save = () => {
     $scope.item.purchased_at = $scope.formatDate($scope.item.purchased_at)
-    Item.save($scope.item, () => {
+    Item.update($scope.item, () => {
       $state.go('items.all')
     }, response => {
       $scope.errors = response.data

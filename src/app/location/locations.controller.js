@@ -1,9 +1,10 @@
 
 export default function LocationController ($scope, Location, uiGridConstants) {
-  var status = [
+  let status = [
     { value: '0', label: 'Created' },
     { value: '1', label: 'DONE' }
   ]
+
   $scope.gridOptions = {
     enableHorizontalScrollbar: uiGridConstants.scrollbars.NEVER,
     enableVerticalScrollbar: uiGridConstants.scrollbars.NEVER,
@@ -18,14 +19,15 @@ export default function LocationController ($scope, Location, uiGridConstants) {
       { field: 'actions', displayName: 'Actions', width: 90, enableFiltering: false, cellTemplate: '<div><a><span class="glyphicon glyphicon-edit" ng-click="grid.appScope.edit(row.entity.id)"></span></a><a><span class="glyphicon glyphicon-info-sign" ng-click="grid.appScope.info(row.entity.id)"></span></a></div>' }
     ]
   }
+
   Location.query(locations => {
     $scope.gridOptions.data = locations
   })
-  
-  $scope.edit=function(value) {
+
+  $scope.edit = (value) => {
   }
 
-  $scope.info=function(value) {
+  $scope.info = (value) => {
   }
 }
 
