@@ -1,9 +1,11 @@
+import 'angular-ui-grid/ui-grid.min.css'
 import './assets/scss/app.scss'
 
 import angular from 'angular'
 import resource from 'angular-resource'
 import router from 'angular-ui-router'
 import uiBootstrap from 'angular-ui-bootstrap'
+import uiGrid from 'angular-ui-grid'
 
 import config from './config'
 import JWTService from './app/authentication/jwt.service'
@@ -39,7 +41,7 @@ import AddItemController from './app/item/items.add.controller'
 import LocationController from './app/location/locations.controller'
 import AddLocationController from './app/location/locations.add.controller'
 
-export default angular.module('app', [resource, router, uiBootstrap, require('angular-ui-grid')])
+export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
   })

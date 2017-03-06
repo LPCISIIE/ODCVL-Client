@@ -8,13 +8,15 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
     telephone: '',
     email: ''
   }
+
   $scope.model = {
-    barcode: '',
-  };
-  $scope.barcodeScanned = function(barcode) {        
-        console.log('callback received barcode: ' + barcode);                     
-        $scope.model.barcode = barcode;        
-    }
+    barcode: ''
+  }
+
+  $scope.barcodeScanned = (barcode) => {
+    console.log('callback received barcode: ' + barcode)
+    $scope.model.barcode = barcode
+  }
 }
 
 AddLocationController.$inject = ['$scope', '$state', 'Client', 'FlashService']
