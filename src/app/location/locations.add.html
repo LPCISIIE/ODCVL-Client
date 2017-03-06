@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="page-header">
+        <h1>Ajouter une Location</h1>
+    </div>
+    <form>
+        <div class="form-group" has-error="errors.nom">
+            <label for="date_debut">Date de début</label>
+            <input ng-model="location.date_debut" type="date" id="date_debut" class="form-control">
+            <field-errors errors="errors.date_debut"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.prenom">
+            <label for="date_fin">Date de fin</label>
+            <input ng-model="location.date_fin" type="date" id="date_fin" class="form-control">
+            <field-errors errors="errors.date_fin"></field-errors>
+        </div>
+        <div class="form-group" has-error="errors.status">
+           <label for="status">Select list:</label>
+            <select class="form-control" id="status">
+              <option value = "0">Finished</option>
+              <option value = "1">DRAFT</option>
+            </select>
+            <field-errors errors="errors.organisme"></field-errors>
+        </div>
+      
+        <center><input ng-click="save()" type="submit" value="Suivant" class="btn btn-success" ></center>
+
+    </form>
+</div>
