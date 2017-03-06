@@ -2,23 +2,22 @@ export default class FlashService {
 
   constructor ($rootScope) {
     this.$rootScope = $rootScope
-    this.initService()
-  }
-
-  initService () {
-    this.$rootScope.$on('$locationChangeStart', function () {
-      this.clearFlashMessage()
-    })
   }
   clearFlashMessage () {
     var flash = this.$rootScope.flash
-    if (this.$rootScope.flash) {
+    if (flash) {
       if (!flash.keepAfterLocationChange) {
-        delete (this.$rootScope.flash)
+        delete this.$rootScope.flash
       } else {
+        // only keep for a single location change
         flash.keepAfterLocationChange = false
       }
     }
+  }
+  initService ($rootScope) {
+    this.$rootScope.$on('$locationChangeStart', function ($rootScope) {
+      this.clearFlashMessage()
+    })
   }
   Success (message, keepAfterLocationChange) {
     this.$rootScope.flash = {

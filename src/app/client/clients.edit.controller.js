@@ -7,7 +7,8 @@ export default function EditClientController ($scope, $state, $stateParams, Clie
   $scope.save = () => {
     Client.update($scope.client, () => {
       $state.go('clients.all')
-      FlashService.Success('Client mis à jour avec succès ')
+      FlashService.initService()
+      FlashService.Success('Client mis à jour avec succès ', 500, true)
     }, response => {
       $scope.errors = response.data
     })

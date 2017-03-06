@@ -7,7 +7,8 @@ export default function ClientsController ($scope, Client, FlashService) {
   $scope.delete = (client) => {
     Client.delete(client, () => {
       Client.query(clients => {
-        FlashService.Success('Client supprimé avec succès ')
+        FlashService.initService()
+        FlashService.Success('Client supprimé avec succès ', 500, true)
         $scope.clients = clients
       })
     })
