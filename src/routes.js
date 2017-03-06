@@ -96,6 +96,12 @@ export default function route ($stateProvider) {
       template: require('./app/item/items.add.html'),
       controller: 'AddItemCtrl'
     })
+    .state('items.edit', {
+      url: '/:id/edit',
+      reloadOnSearch: false,
+      template: require('./app/item/items.edit.html'),
+      controller: 'EditItemCtrl'
+    })
     .state('locations', {
       abstract: true,
       url: '/locations'
