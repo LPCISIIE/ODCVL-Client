@@ -1,14 +1,17 @@
+import 'angular-ui-grid/ui-grid.min.css'
 import './assets/scss/app.scss'
 
 import angular from 'angular'
 import resource from 'angular-resource'
 import router from 'angular-ui-router'
 import uiBootstrap from 'angular-ui-bootstrap'
+import uiGrid from 'angular-ui-grid'
 
 import config from './config'
 import JWTService from './app/authentication/jwt.service'
 import AuthService from './app/authentication/authentication.service'
 import FlashService from './app/authentication/flash.service'
+import BarcodeService from './app/item/barcode.service'
 
 import User from './app/user/user'
 import Category from './app/category/category'
@@ -36,10 +39,11 @@ import AddProductController from './app/product/products.add.controller'
 import EditProductController from './app/product/products.edit.controller'
 import ItemsController from './app/item/items.controller'
 import AddItemController from './app/item/items.add.controller'
+import EditItemController from './app/item/items.edit.controller'
 import LocationController from './app/location/locations.controller'
 import AddLocationController from './app/location/locations.add.controller'
 
-export default angular.module('app', [resource, router, uiBootstrap, require('angular-ui-grid')])
+export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
   })
@@ -47,6 +51,7 @@ export default angular.module('app', [resource, router, uiBootstrap, require('an
   .service('JWTService', JWTService)
   .service('FlashService', FlashService)
   .service('AuthService', AuthService)
+  .service('BarcodeService', BarcodeService)
   .config(config)
   .factory('Category', Category)
   .factory('CategoryProduct', CategoryProduct)
@@ -71,6 +76,7 @@ export default angular.module('app', [resource, router, uiBootstrap, require('an
   .controller('EditProductCtrl', EditProductController)
   .controller('ItemsCtrl', ItemsController)
   .controller('AddItemCtrl', AddItemController)
+  .controller('EditItemCtrl', EditItemController)
   .controller('LocationController', LocationController)
   .controller('AddLocationController', AddLocationController)
   .run(['$transitions', $transitions => {
