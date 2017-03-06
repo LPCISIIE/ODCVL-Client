@@ -2,6 +2,7 @@ export default class FlashService {
 
   constructor ($rootScope) {
     this.$rootScope = $rootScope
+    this.initService()
   }
   clearFlashMessage () {
     var flash = this.$rootScope.flash
@@ -14,9 +15,11 @@ export default class FlashService {
       }
     }
   }
-  initService ($rootScope) {
-    this.$rootScope.$on('$locationChangeStart', function ($rootScope) {
-      this.clearFlashMessage()
+  initService () {
+    var that = this
+    this.$rootScope.$on('$locationChangeStart', function (event) {
+      that.clearFlashMessage()
+
     })
   }
   Success (message, keepAfterLocationChange) {
