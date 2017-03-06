@@ -15,12 +15,12 @@ module.exports = {
     extensions: ['', '.js', '.css', '.html']
   },
   module: {
-    /* preLoaders: [{
+    preLoaders: [{
         test: /\.js$/,
         loader: 'eslint',
         exclude: /(node_modules|bower_components)/
       }
-    ], */
+    ],
     loaders: [{
         test: /\.s?css$/,
         loaders: ['style', 'css', 'sass']
