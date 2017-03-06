@@ -97,4 +97,18 @@ export default function route ($stateProvider) {
       template: require('./app/item/items.add.html'),
       controller: 'AddItemCtrl'
     })
+    .state('locations', {
+      abstract: true,
+      url: '/locations'
+    })
+    .state('locations.all', {
+      url: '',
+      template: require('./app/location/locations.html'),
+      controller: 'LocationController'
+    })
+     .state('locations.add', {
+        url: '/add',
+        template: require('./app/location/locations.add.html'),
+        controller: 'AddLocationController'
+      })
 }

@@ -16,6 +16,7 @@ import CategoryProduct from './app/category/category.product'
 import Product from './app/product/product'
 import Item from './app/item/item'
 import Client from './app/client/client'
+import Location from './app/location/location'
 
 import TopbarDirective from './app/topbar/topbar.directive'
 import FieldErrorsDirective from './app/common/field-errors.directive'
@@ -35,8 +36,10 @@ import AddProductController from './app/product/products.add.controller'
 import EditProductController from './app/product/products.edit.controller'
 import ItemsController from './app/item/items.controller'
 import AddItemController from './app/item/items.add.controller'
+import LocationController from './app/location/locations.controller'
+import AddLocationController from './app/location/locations.add.controller'
 
-export default angular.module('app', [resource, router, uiBootstrap])
+export default angular.module('app', [resource, router, uiBootstrap, require('angular-ui-grid')])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
   })
@@ -50,6 +53,7 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .factory('Product', Product)
   .factory('Item', Item)
   .factory('Client', Client)
+  .factory('Location', Location)
   .directive('topbar', TopbarDirective)
   .directive('fieldErrors', FieldErrorsDirective)
   .directive('hasError', HasErrorDirective)
@@ -67,6 +71,8 @@ export default angular.module('app', [resource, router, uiBootstrap])
   .controller('EditProductCtrl', EditProductController)
   .controller('ItemsCtrl', ItemsController)
   .controller('AddItemCtrl', AddItemController)
+  .controller('LocationController', LocationController)
+  .controller('AddLocationController', AddLocationController)
   .run(['$transitions', $transitions => {
     $transitions.onSuccess({}, trans => {
       if (trans.injector().get('JWTService').getAccessToken()) {
