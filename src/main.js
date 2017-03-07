@@ -42,7 +42,7 @@ import AddItemController from './app/item/items.add.controller'
 import EditItemController from './app/item/items.edit.controller'
 import LocationController from './app/location/locations.controller'
 import AddLocationController from './app/location/locations.add.controller'
-
+import EditLocationController from './app/location/locations.edit.controller'
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
@@ -79,6 +79,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
   .controller('EditItemCtrl', EditItemController)
   .controller('LocationController', LocationController)
   .controller('AddLocationController', AddLocationController)
+  .controller('EditLocationCtrl', EditLocationController)
   .run(['$transitions', $transitions => {
     $transitions.onSuccess({}, trans => {
       if (trans.injector().get('JWTService').getAccessToken()) {

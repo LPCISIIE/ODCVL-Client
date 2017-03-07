@@ -49,7 +49,7 @@
             <td>{{ client.email }}</td>
             <td class="text-right">
                 <a  class="btn btn-success btn-xs">
-                    <span class="glyphicon glyphicon-plus"></span> Ajouter une location
+                    <span ui-sref="locations.add({ client_id: client.id })" class="glyphicon glyphicon-plus"></span> Ajouter une location
                 </a>
                 <a  ui-sref="clients.edit({ id: client.id })" class="btn btn-warning btn-xs">
                     <span class="glyphicon glyphicon-edit"></span>
