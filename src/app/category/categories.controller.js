@@ -1,5 +1,5 @@
 
-export default function CategoriesController ($scope, Category) {
+export default function CategoriesController ($scope, Category, FlashService) {
   Category.query(categories => {
     $scope.categories = categories
   })
@@ -8,9 +8,10 @@ export default function CategoriesController ($scope, Category) {
     Category.delete(category, () => {
       Category.query(categories => {
         $scope.categories = categories
+        FlashService.Success('Catégorie supprimée avec succès ', 500, true)
       })
     })
   }
 }
 
-CategoriesController.$inject = ['$scope', 'Category']
+CategoriesController.$inject = ['$scope', 'Category', 'FlashService']

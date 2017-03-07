@@ -1,5 +1,5 @@
 
-export default function AddCategoryController ($scope, $state, Category) {
+export default function AddCategoryController ($scope, $state, Category, FlashService) {
   $scope.category = {
     name: '',
     parent_id: 0
@@ -16,10 +16,12 @@ export default function AddCategoryController ($scope, $state, Category) {
   $scope.save = () => {
     Category.save($scope.category, () => {
       $state.go('categories.all')
+      FlashService.Success('Catagorie ajoutée avec succès ',500, true)
     }, response => {
       $scope.errors = response.data
+      FlashService.Error("erreur lors de l\'ajout de la nouvelle catégorie ")
     })
   }
 }
 
-AddCategoryController.$inject = ['$scope', '$state', 'Category']
+AddCategoryController.$inject = ['$scope', '$state', 'Category', 'FlashService']
