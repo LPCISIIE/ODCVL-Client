@@ -7,10 +7,8 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
   $scope.save = () => {
     Location.update($scope.location, () => {
       $state.go('locations.all')
-
     }, response => {
       $scope.errors = response.data
-
     })
   }
 }

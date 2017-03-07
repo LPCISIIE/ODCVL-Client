@@ -19,7 +19,6 @@ export default class FlashService {
     var that = this
     this.$rootScope.$on('$locationChangeStart', function (event) {
       that.clearFlashMessage()
-
     })
   }
   Success (message, keepAfterLocationChange) {
