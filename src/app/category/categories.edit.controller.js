@@ -18,7 +18,7 @@ export default function AddCategoryController ($scope, $state, $stateParams, Cat
       FlashService.Success('Catégorie mise à jour avec succès ', 500, true)
     }, response => {
       $scope.errors = response.data
-      FlashService.Error("erreur lors de la mise à jour de la catégorie")
+      FlashService.Error('erreur lors de la mise à jour de la catégorie')
     })
   }
 }

@@ -20,10 +20,10 @@ export default function AddClientController ($scope, $state, Client, FlashServic
   $scope.save = () => {
     Client.save($scope.client, () => {
       $state.go('clients.all')
-      FlashService.Success('client créé avec succès ',500, true)
+      FlashService.Success('client créé avec succès ', 500, true)
     }, response => {
       $scope.errors = response.data
-      FlashService.Error("erreur lors de la récupération des  clients")
+      FlashService.Error('erreur lors de la récupération des  clients')
     })
   }
 }

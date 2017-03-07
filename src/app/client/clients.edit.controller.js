@@ -10,7 +10,7 @@ export default function EditClientController ($scope, $state, $stateParams, Clie
       FlashService.Success('Client mis à jour avec succès ', 500, true)
     }, response => {
       $scope.errors = response.data
-      FlashService.Error("erreur lors de la mise à jour du client")
+      FlashService.Error('erreur lors de la mise à jour du client')
     })
   }
 }

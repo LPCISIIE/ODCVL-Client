@@ -16,22 +16,20 @@ export default function LocationController ($scope, Location, uiGridConstants) {
       { field: 'status', displayName: 'Status', filter: { selectOptions: status, type: uiGridConstants.filter.SELECT } },
       { field: 'created_at', displayName: 'Date de création', type: 'date', cellFilter: 'date:\'dd/MM/yyyy\'' },
       { field: 'updated_at', displayName: 'Dernière modification', type: 'date', cellFilter: 'date:\'dd/MM/yyyy\'' },
-      { field: 'actions', displayName: 'Actions', width: 170, enableFiltering: false, cellTemplate: '<div><a  ui-sref="locations.edit({ id: row.entity.id })" class="btn btn-warning btn-xs">' +
-      '<span class="glyphicon glyphicon-edit">Edition</span></a><button ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-xs">' +
-      '<span class="glyphicon glyphicon-remove">Suppression</span></button></div>' }
+      { field: 'actions',
+        displayName: 'Actions',
+        width: 170,
+        enableFiltering: false,
+        cellTemplate: '<div><a  ui-sref="locations.edit({ id: row.entity.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit">Edition</span></a><button ng-click="grid.appScope.delete(row.entity.id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove">Suppression</span></button></div>'
+      }
     ]
   }
-
   Location.query(locations => {
     $scope.gridOptions.data = locations
   })
-
   $scope.edit = (value) => {
-   alert("test")
   }
-
   $scope.info = (value) => {
   }
 }
-
 LocationController.$inject = ['$scope', 'Location', 'uiGridConstants']
