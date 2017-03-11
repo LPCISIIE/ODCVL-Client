@@ -2,12 +2,16 @@
     <div class="page-header">
         <h1>Fiche Location</h1>
     </div>
+
+    
     <form>
         <div class="form-group" has-error="errors.nom">
             <label for="id">Id</label>
             <input ng-model="location.id" type="text" id="id" class="form-control">
             <field-errors errors="errors.id"></field-errors>
         </div>
+
+
         <div class="row">
             <div class="col-md-6">
                 <label for="date_debut">Date début</label>
@@ -22,6 +26,9 @@
                 </div>
             </div>
         </div>
+
+
+
         <div class="row">
             <div class="col-md-6">
                 <label for="date_fin">Date fin</label>
@@ -29,18 +36,21 @@
                     <input type="text" id="date_fin" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="location.date_fin" is-open="open" close-text="Fermer" />
                     <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open = true"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
+                 </span>
                 </p>
                 <div class="has-error">
                     <field-errors errors="errors.date_fin" first="true"></field-errors>
                 </div>
             </div>
         </div>
+
         <div class="form-group" has-error="errors.adresse">
             <label for="status">Statut</label>
             <input ng-model="location.status" type="text" id="status" class="form-control">
             <field-errors errors="errors.status"></field-errors>
         </div>
+
+
         <div class="row">
             <div class="col-md-6">
                 <label for="created_at">Creation</label>
@@ -55,6 +65,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-md-6">
                 <label for="updated_at">Date mise à jour</label>

@@ -6,6 +6,8 @@ import resource from 'angular-resource'
 import router from 'angular-ui-router'
 import uiBootstrap from 'angular-ui-bootstrap'
 import uiGrid from 'angular-ui-grid'
+import uiSelect from 'ui-select'
+import ngSanitize from 'angular-sanitize'
 
 import config from './config'
 import JWTService from './app/authentication/jwt.service'
@@ -24,6 +26,8 @@ import Location from './app/location/location'
 import TopbarDirective from './app/topbar/topbar.directive'
 import FieldErrorsDirective from './app/common/field-errors.directive'
 import HasErrorDirective from './app/common/has-error.directive'
+import datepickerPopupDirective from './app/common/datepickerPopupDirective'
+import BarcodeScannerDirective from './app/location/barcodeScanner'
 
 import LoginController from './app/authentication/login.controller'
 import RegisterController from './app/authentication/register.controller'
@@ -43,7 +47,7 @@ import EditItemController from './app/item/items.edit.controller'
 import LocationController from './app/location/locations.controller'
 import AddLocationController from './app/location/locations.add.controller'
 import EditLocationController from './app/location/locations.edit.controller'
-export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
+export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
   })
@@ -62,6 +66,8 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid])
   .directive('topbar', TopbarDirective)
   .directive('fieldErrors', FieldErrorsDirective)
   .directive('hasError', HasErrorDirective)
+  .directive('barcodeScanner', BarcodeScannerDirective)
+  .directive('datepickerPopup', datepickerPopupDirective)
   .controller('LoginCtrl', LoginController)
   .controller('RegisterCtrl', RegisterController)
   .controller('HomeCtrl', HomeController)
