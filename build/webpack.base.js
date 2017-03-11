@@ -14,6 +14,11 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.css', '.html']
   },
+  resolve: {
+    alias: {
+      jquery: "jquery/src/jquery"
+    }
+  },
   module: {
     preLoaders: [{
         test: /\.js$/,
