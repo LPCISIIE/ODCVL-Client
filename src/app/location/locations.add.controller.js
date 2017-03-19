@@ -116,6 +116,8 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
       $scope.cartToSend.items.push({
         id: item.id,
         product_id: item.product.id,
+        prix: item.prix,
+        remarques: item.remarques,
         barcode: item.code
       })
     }
