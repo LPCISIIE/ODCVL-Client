@@ -14,11 +14,11 @@
   </head>
   <body ng-app="app">
     <topbar></topbar>
-    <ui-view></ui-view>
-    <div ng-if="flash" class="jumbotron">
+      <div ng-if="flash">
       <div class="container">
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-bind="flash.message"></div>
       </div>
     </div>
+    <ui-view></ui-view>
   </body>
 </html>
