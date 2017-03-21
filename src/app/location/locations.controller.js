@@ -1,8 +1,11 @@
 
 export default function LocationController ($scope, Location, uiGridConstants, FlashService) {
   let status = [
-    { value: '0', label: 'Created' },
-    { value: '1', label: 'DONE' }
+    { value: '0', label: 'Créée' },
+    { value: '1', label: 'En attente' },
+    { value: '2', label: 'En cours' },
+    { value: '3', label: 'Annulée' },
+    { value: '4', label: 'Terminée' }
   ]
 
   $scope.gridOptions = {
