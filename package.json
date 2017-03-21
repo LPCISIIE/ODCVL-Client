@@ -9,11 +9,13 @@
     "angular": "^1.6.1",
     "angular-flash-alert": "^2.4.0",
     "angular-resource": "^1.6.1",
+    "angular-sanitize": "^1.6.3",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-grid": "^4.0.2",
     "angular-ui-router": "^1.0.0-rc.1",
     "jquery": "^3.1.1",
-    "jsbarcode": "^3.5.8"
+    "jsbarcode": "^3.5.8",
+    "ui-select": "^0.19.6"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
