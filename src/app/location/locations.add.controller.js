@@ -16,7 +16,7 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
     total: 0.00
   }
   $scope.person = {
-    selectedClient: {'id': 44, 'nom': 'sk', 'prenom': 'kk', 'organisme': 'kk', 'adresse': 'k', 'telephone': '88', 'email': 'jjj@f.com', 'created_at': '2017-03-24 10:48:40', 'updated_at': '2017-03-24 10:48:40', 'locations': []}
+    selectedClient: null
   }
   $scope.client_selection = true
   $scope.location = {
