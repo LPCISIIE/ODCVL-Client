@@ -8,7 +8,8 @@ export default function ModalController ($scope, $filter, $uibModalInstance) {
     var found = $filter('filter')($scope.cart.items, {product_id: index.product_id}, true)
     var indexItem = $scope.cart.items.indexOf(found[0])
     $scope.cart.items[indexItem].qt --
-
+    $scope.price.total = parseFloat($scope.price.total) - parseFloat($scope.cart.items[indexItem].product.prix)
+    console.log($scope.price.total)
     // Remove materiel from cart if quantity == 0
     if ($scope.cart.items[$scope.cart.items.indexOf(found[0])].qt === 0) {
       $scope.cart.items.splice(indexItem, 1)
