@@ -8,13 +8,21 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
     telephone: '',
     email: ''
   }
-  $scope.person = {
-    selectedClient: null
+  $scope.nextstep = true
+  $scope.switch = () => {
+    $scope.nextstep = !$scope.nextstep
   }
+  $scope.price = {
+    total: 0.00
+  }
+  $scope.person = {
+    selectedClient: {'id': 44, 'nom': 'sk', 'prenom': 'kk', 'organisme': 'kk', 'adresse': 'k', 'telephone': '88', 'email': 'jjj@f.com', 'created_at': '2017-03-24 10:48:40', 'updated_at': '2017-03-24 10:48:40', 'locations': []}
+  }
+  $scope.client_selection = true
   $scope.location = {
     dateDebut: new Date(),
     dateFin: new Date(),
-    status: ''
+    status: 'inactive'
   }
 
   $scope.model = {
@@ -42,16 +50,16 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
   $scope.clear = function () {
     $scope.person.selected = undefined
   }
-  Client.query(clients => {
-    $scope.people = clients
-  })
   $scope.boolForm = false
   $scope.showForm = function () {
     $scope.person.selectedClient = null
     $scope.boolForm = true
+    $scope.client_selection = false
   }
   $scope.hideForm = function () {
+    // $scope.person.selectedClient = null
     $scope.boolForm = false
+    $scope.client_selection = true
   }
   $scope.popup1 = {
     opened: false
@@ -91,6 +99,13 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
       console.log(error)
     })
   }
+
+  var loadUsers = () => {
+    Client.query(clients => {
+      $scope.people = clients
+    })
+  }
+  loadUsers()
   var addItem = function (item) {
     if (checkDuplicateItem(item.id) === true) {
       FlashService.Success('Item déja existant', 500, true)
@@ -98,31 +113,38 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
     }
     var currentItem = checkSameMaterial(item.product.id)
     if (!currentItem) {
+      console.log(item)
       $scope.cart.items.push({
         id: item.id,
         nom: item.product.name,
         qt: 1,
+        prix: item.product.prix,
         product_id: item.product.id
       })
       $scope.cartToSend.items.push({
         id: item.id,
-        prix: item.prix,
+        prix: item.product.prix,
         remarques: item.remarques,
         product_id: item.product.id,
         barcode: item.code
       })
+      $scope.price.total = parseFloat(item.product.prix) + parseFloat($scope.price.total)
     } else {
       $scope.cart.items[$scope.cart.items.indexOf(currentItem)].qt ++
       $scope.cartToSend.items.push({
         id: item.id,
         product_id: item.product.id,
-        prix: item.prix,
+        prix: item.product.prix,
         remarques: item.remarques,
         barcode: item.code
       })
+      $scope.price.total = parseFloat(item.product.prix) + parseFloat($scope.price.total)
     }
   }
   $scope.removeItem = function (index) {
+    var itemsprice = parseFloat(index.prix) * parseFloat(index.qt)
+    console.log(index.qt)
+    $scope.price.total = parseFloat($scope.price.total) - itemsprice
     $scope.cart.items.splice(index, 1)
     var founditems = $filter('filter')($scope.cartToSend.items, {product_id: index.product_id}, true)
     founditems.forEach(item => {
@@ -166,14 +188,17 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
         items: $scope.cartToSend.items.map(item => item.id)
       }
       Location.save(locationPost, (response) => {
+        console.log('success')
         FlashService.Success('Location crée avec succès', 500, true)
       }, response => {
+        $scope.hideForm()
         $scope.errors = response.data
         FlashService.Error('erreur lors de l\'enregistrement de la location')
       })
     } else {
       Client.save($scope.client, (response) => {
         console.log(response.id)
+        let rid = response
         locationPost = {
           client_id: response.id,
           date_debut: $filter('date')($scope.location.dateDebut, 'dd/MM/yyyy'),
@@ -184,11 +209,16 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
         Location.save(locationPost, (response) => {
           FlashService.Success('Location crée avec succès')
         }, response => {
+          $scope.hideForm()
+          loadUsers()
+          $scope.person.selectedClient = rid
           $scope.errors = response.data
           FlashService.Error('erreur lors de l\'enregistrement de la location')
         })
       }, response => {
+        $scope.showForm()
         $scope.errors = response.data
+        $scope.nextstep = true
         FlashService.Error('erreur lors de la récupération des  clients')
       })
     }
