@@ -2,17 +2,18 @@
 export default function ModalController ($scope, $filter, $uibModalInstance) {
   $scope.remove = function (index) {
     // Remove Item from Modal list
-    $scope.listItems = $scope.listItems.splice(index, 1)
+    // $scope.listItems = $scope.listItems.splice(index, 1)
+    $scope.listItems.splice($scope.listItems.indexOf(index), 1)
 
     // Decremante quantity of item's material in cart
     var found = $filter('filter')($scope.cart.items, {product_id: index.product_id}, true)
     var indexItem = $scope.cart.items.indexOf(found[0])
     $scope.cart.items[indexItem].qt --
-    $scope.price.total = parseFloat($scope.price.total) - parseFloat($scope.cart.items[indexItem].product.prix)
-    console.log($scope.price.total)
+    $scope.price.total = parseFloat($scope.price.total) - parseFloat($scope.cart.items[indexItem].prix)
     // Remove materiel from cart if quantity == 0
     if ($scope.cart.items[$scope.cart.items.indexOf(found[0])].qt === 0) {
       $scope.cart.items.splice(indexItem, 1)
+      // $scope.cart.items.splice($scope.cart.items.indexOf(indexItem), 1)
       $uibModalInstance.close(true)
     }
     // Remove Item from cart to send

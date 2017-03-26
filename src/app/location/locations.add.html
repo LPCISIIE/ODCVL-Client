@@ -28,81 +28,43 @@
                   </ui-select>
                </div>
                <div class="row" ng-if="boolForm">
-  <div class="col-md-4" has-error="errors.nom" ng-class="{'has-error': myForm.nom.$dirty && myForm.nom.$touched && myForm.nom.$error.required}">
-      <label for="nom">Nom</label>
-      <input required ng-model="client.nom" type="text" name="nom" class="form-control" id="nom">
-      <span ng-show="myForm.nom.$touched && myForm.nom.$error.required" class="help-block">Le nom est requis</span>
-  </div>
-   <div class="col-md-4" has-error="errors.prenom" ng-class="{'has-error': myForm.prenom.$dirty && myForm.prenom.$touched && myForm.prenom.$error.required}">
-      <label for="prenom">Prénom</label>
-      <input required ng-model="client.prenom" type="text" name="prenom" class="form-control" id="prenom">
-      <span ng-show="myForm.prenom.$touched && myForm.prenom.$error.required" class="help-block">Le prénom est requis</span>
-  </div>
-   <div class="col-md-4" has-error="errors.organisme"  ng-class="{'has-error': myForm.organisme.$dirty && myForm.organisme.$organisme && myForm.organisme.$error.required}">
-      <label for="organisme">Organisme</label>
-      <input required ng-model="client.organisme" type="text" name="organisme" class="form-control" id="organisme">
-      <span ng-show="myForm.organisme.$touched && myForm.organisme.$error.required" class="help-block">L'organisme est requis</span>
-  </div>
-   <div class="col-md-4" has-error="errors.adresse"  ng-class="{'has-error': myForm.adresse.$dirty && myForm.adresse.$touched && myForm.adresse.$error.required}">
-      <label for="adresse">Adresse</label>
-      <input required ng-model="client.adresse" type="text" name="adresse" class="form-control" id="adresse">
-      <span ng-show="myForm.adresse.$touched && myForm.adresse.$error.required" class="help-block">L'adresse est requise</span>
-  </div>
-   <div class="col-md-4" has-error="errors.telephone" ng-class="{'has-error': myForm.telephone.$dirty && myForm.telephone.$touched && myForm.telephone.$error.required}">
-      <label for="telephone">Téléphone</label>
-      <input required ng-model="client.telephone" type="text" name="telephone" class="form-control" id="telephone">
-      <span ng-show="myForm.telephone.$touched && myForm.telephone.$error.required" class="help-block">Le telephone est requis</span>
-      <field-errors errors="errors.telephone"></field-errors>
-  </div>
-   <div class="col-md-4" has-error="errors.email" ng-class="{'has-error': myForm.email.$dirty && myForm.email.$touched && myForm.email.$error.required || myForm.email.$error.email}">
-      <label for="email">Email</label>
-      <input required ng-model="client.email" type="email" name="email" class="form-control" id="email">
-      <span ng-show="myForm.email.$touched && myForm.email.$error.required" class="help-block">Un email valide est requis</span>
-      <field-errors errors="errors.email"></field-errors>
-  </div>
-
-
- 
-
-</div>
-               <!--
-                  <div class="row">
-                     <div class="form-group" ng-class="{'has-error': myForm.myInput.$valid ,  'has-success': !myForm.myInput.$valid}">
-                     <div class="col-md-4"  >
-                        <label for="nom">Nom</label>{{myForm.myInput.$valid}}
-                        <input required ng-model="client.nom" type="text" id="myForm.nom" name="myInput" class="form-control">
-                     </div>
-                     </div>
-                      <div class="form-group" ng-class="{'has-error': myForm.prenom.$valid ,  'has-success': !myForm.myInput.$valid}">
-                     <div class="col-md-4">
-                        <label for="prenom">Prénom</label>
-                        <input required ng-model="client.prenom" type="text" name="prenom" id="prenom" class="form-control">
-                     </div>
-                     </div>
-                     <div class="form-group has-error">
-                     <div class="col-md-4">
-                        <label for="organisme">Organisme</label>
-                        <input ng-model="client.organisme" type="text" id="organisme" class="form-control">
-                     </div>
-                     </div>
+                  <div class="col-md-4" has-error="errors.nom" ng-class="{'has-error': myForm.nom.$dirty && myForm.nom.$touched && myForm.nom.$error.required}">
+                     <label for="nom">Nom</label>
+                     <input required ng-model="client.nom" type="text" name="nom" class="form-control" id="nom">
+                     <span ng-show="myForm.nom.$touched && myForm.nom.$error.required" class="help-block">Le nom est requis</span>
+                     <field-errors errors="errors.nom"></field-errors>
                   </div>
-                  <div class="row">
-                     <div class="col-md-4">
-                        <label for="adresse">Adresse</label>
-                        <input ng-model="client.adresse" type="text" id="adresse" class="form-control">
-                     </div>
-                     <div class="col-md-4">
-                        <label for="telephone">Téléphone</label>
-                        <input ng-model="client.telephone" type="text" id="telephone" class="form-control">
-                     </div>
-                     <div class="col-md-4">
-                        <label for="email">Email</label>
-                        <input ng-model="client.email" type="text" id="email" class="form-control">
-                     </div>
+                  <div class="col-md-4" has-error="errors.prenom" ng-class="{'has-error': myForm.prenom.$dirty && myForm.prenom.$touched && myForm.prenom.$error.required}">
+                     <label for="prenom">Prénom</label>
+                     <input required ng-model="client.prenom" type="text" name="prenom" class="form-control" id="prenom">
+                     <span ng-show="myForm.prenom.$touched && myForm.prenom.$error.required" class="help-block">Le prénom est requis</span>
+                     <field-errors errors="errors.prenom"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.organisme"  ng-class="{'has-error': myForm.organisme.$dirty && myForm.organisme.$organisme && myForm.organisme.$error.required}">
+                     <label for="organisme">Organisme</label>
+                     <input required ng-model="client.organisme" type="text" name="organisme" class="form-control" id="organisme">
+                     <span ng-show="myForm.organisme.$touched && myForm.organisme.$error.required" class="help-block">L'organisme est requis</span>
+                     <field-errors errors="errors.organisme"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.adresse"  ng-class="{'has-error': myForm.adresse.$dirty && myForm.adresse.$touched && myForm.adresse.$error.required}">
+                     <label for="adresse">Adresse</label>
+                     <input required ng-model="client.adresse" type="text" name="adresse" class="form-control" id="adresse">
+                     <span ng-show="myForm.adresse.$touched && myForm.adresse.$error.required" class="help-block">L'adresse est requise</span>
+                     <field-errors errors="errors.adresse"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.telephone" ng-class="{'has-error': myForm.telephone.$dirty && myForm.telephone.$touched && myForm.telephone.$error.required}">
+                     <label for="telephone">Téléphone</label>
+                     <input required ng-model="client.telephone" type="text" name="telephone" class="form-control" id="telephone">
+                     <span ng-show="myForm.telephone.$touched && myForm.telephone.$error.required" class="help-block">Le telephone est requis</span>
+                     <field-errors errors="errors.telephone"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.email" ng-class="{'has-error': myForm.email.$dirty && myForm.email.$touched && myForm.email.$error.required || myForm.email.$error.email}">
+                     <label for="email">Email</label>
+                     <input required ng-model="client.email" type="email" name="email" class="form-control" id="email">
+                     <span ng-show="myForm.email.$touched && myForm.email.$error.required" class="help-block">Un email valide est requis</span>
+                     <field-errors errors="errors.email"></field-errors>
                   </div>
                </div>
-
-               -->
             </div>
             <div uib-accordion-group class="panel-default" is-open="true">
                <uib-accordion-heading>
@@ -151,13 +113,14 @@
    </div>
    <div class="col-md-12" ng-show="!nextstep">
       <div class="row">
-         <div class="col-md-6">
+         <div class="col-md-6" has-error="errors.items">
             <div class="input-group input-group-md">
                <input ng-model="barcode" type="text" class="form-control input-md" id="codebare" placeholder="Saisir le code barre ou scanner un matériel">
                <span class="input-group-btn">
                <button ng-click="manualInsert()" class="btn btn-primary btn-md" type="submit">Valider</button>
                </span>
             </div>
+            <field-errors errors="errors.items"></field-errors>
          </div>
       </div>
       <hr>
@@ -166,6 +129,7 @@
             <tr>
                <th>Nom</th>
                <th>Quantité</th>
+               <th>Prix</th>
                <th>Actions</th>
             </tr>
          </thead>
@@ -173,6 +137,7 @@
             <tr ng-repeat="item in cart.items">
                <td ng-click="loadDetailForm(item)" >{{ item.nom }}</td>
                <td>{{ item.qt }}</td>
+               <td>{{ item.prix_lot }} €</td>
                <td>
                   <button  ng-click="loadDetailForm(item)" class="btn btn-info btn-xs">
                   <span  class="glyphicon glyphicon-info-sign"></span>
@@ -192,7 +157,10 @@
       </div>
       <span ng-bind="items"></span>
       <div class="well">
-         <h3> Prix Total :  {{ price.total }} €</h3>
+         <h4>
+         Durée de la location : {{(location.dateFin - location.dateDebut)/1000/60/60/24 | number:0 }} jours </h3>
+         <h4>
+         Prix Total :  {{ price.total * ((location.dateFin - location.dateDebut)/1000/60/60/24 | number:0) }} €</h2>
       </div>
       <div class="text-center">
          <button ng-click="switch()" class="btn btn-warning btn-sx" type="button">Retour à l'étape 1</button>
@@ -201,4 +169,3 @@
       </form>
    </div>
 </div>
-
