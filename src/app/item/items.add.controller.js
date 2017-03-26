@@ -2,7 +2,6 @@
 export default function AddItemController ($scope, $state, $stateParams, BarcodeService, Item, Category, Product, CategoryProduct) {
   $scope.item = {
     code: '',
-    prix: '',
     status: '',
     reparations: '',
     remarques: '',
