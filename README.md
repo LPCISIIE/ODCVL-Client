@@ -30,3 +30,4 @@ $ npm run build
 
 # TODO
 - Enable authentication
+- Electron
