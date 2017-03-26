@@ -1,177 +1,171 @@
-<div class="text-center">
- <div class="page-header">
-        <h1>Ajouter une Location</h1>
-</div>
-</div>
-
-
-<div class="col-md-6">
-
-   
-
-    <form>
-    <uib-accordion close-others="false">
-    <div uib-accordion-group class="panel-default" is-open="status.open">
-      <uib-accordion-heading>
-         <strong>CLIENT </strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-      </uib-accordion-heading>
-
-      <div class="text-center" >
-        <label  class="radio-inline">
-          <input ng-click="hideForm()" type="radio" name="optradio" checked><strong>Client existant</strong>
-        </label>
-        <label class="radio-inline">
-          <input type="radio" ng-click="showForm()" name="optradio"><strong>Nouveau Client</strong>
-        </label>
-        </div>
-        <div class="help-block"></div>
-       <div class="form-group">
-       <ui-select ng-if="!boolForm" ng-model="person.selected" theme="bootstrap" >
-            <ui-select-match placeholder="Séléctionner un client...">{{$select.selected.nom}}</ui-select-match>
-            <ui-select-choices repeat="item in people | filter: $select.search">
-              <div ng-bind-html="item.nom + ' ' + item.prenom | highlight: $select.search"></div>
-              <small ng-bind-html="item.email | highlight: $select.search"></small>
-            </ui-select-choices>
-        </ui-select>
-        </div>
-
-        <div class="row" ng-if="boolForm"> 
-            <div class="row">
-              <div class="col-md-4">
-                    <label for="nom">Nom</label>
-                    <input ng-model="client.nom" type="text" id="nom" class="form-control">
-              </div>
-              <div class="col-md-4">
-                    <label for="prenom">Prénom</label>
-                    <input ng-model="client.prenom" type="text" id="prenom" class="form-control">
-              </div>
-              <div class="col-md-4">
+<div class="container">
+   <div class="page-header">
+      <h1>Nouvelle Location</h1>
+   </div>
+   <div class="col-md-12" ng-show="nextstep" >
+      <form name="myForm" role="form" >
+         <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" is-open="true">
+               <uib-accordion-heading>
+                  <strong>CLIENT </strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+               </uib-accordion-heading>
+               <div class="text-center" >
+                  <label  class="radio-inline">
+                  <input ng-click="hideForm()" ng-checked="client_selection" type="radio" name="optradio"><strong>Client existant</strong>
+                  </label>
+                  <label class="radio-inline">
+                  <input type="radio" ng-click="showForm()" ng-checked="!client_selection" name="optradio"><strong>Nouveau Client</strong>
+                  </label>
+               </div>
+               <div class="help-block"></div>
+               <div class="form-group">
+                  <ui-select ng-required="true" ng-if="!boolForm" ng-model="person.selectedClient" >
+                     <ui-select-match placeholder="Séléctionner un client...">{{$select.selected.nom}}</ui-select-match>
+                     <ui-select-choices repeat="item in people | filter: $select.search">
+                        <div ng-bind-html="item.nom + ' ' + item.prenom | highlight: $select.search"></div>
+                        <small ng-bind-html="item.email | highlight: $select.search"></small>
+                     </ui-select-choices>
+                  </ui-select>
+               </div>
+               <div class="row" ng-if="boolForm">
+                  <div class="col-md-4" has-error="errors.nom" ng-class="{'has-error': myForm.nom.$dirty && myForm.nom.$touched && myForm.nom.$error.required}">
+                     <label for="nom">Nom</label>
+                     <input required ng-model="client.nom" type="text" name="nom" class="form-control" id="nom">
+                     <span ng-show="myForm.nom.$touched && myForm.nom.$error.required" class="help-block">Le nom est requis</span>
+                     <field-errors errors="errors.nom"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.prenom" ng-class="{'has-error': myForm.prenom.$dirty && myForm.prenom.$touched && myForm.prenom.$error.required}">
+                     <label for="prenom">Prénom</label>
+                     <input required ng-model="client.prenom" type="text" name="prenom" class="form-control" id="prenom">
+                     <span ng-show="myForm.prenom.$touched && myForm.prenom.$error.required" class="help-block">Le prénom est requis</span>
+                     <field-errors errors="errors.prenom"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.organisme"  ng-class="{'has-error': myForm.organisme.$dirty && myForm.organisme.$organisme && myForm.organisme.$error.required}">
                      <label for="organisme">Organisme</label>
-                     <input ng-model="client.organisme" type="text" id="organisme" class="form-control">
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-4">
-                    <label for="adresse">Adresse</label>
-                    <input ng-model="client.adresse" type="text" id="adresse" class="form-control">
-              </div>
-              <div class="col-md-4">
-                    <label for="telephone">Téléphone</label>
-                    <input ng-model="client.telephone" type="text" id="telephone" class="form-control">
-              </div>
-              <div class="col-md-4">
+                     <input required ng-model="client.organisme" type="text" name="organisme" class="form-control" id="organisme">
+                     <span ng-show="myForm.organisme.$touched && myForm.organisme.$error.required" class="help-block">L'organisme est requis</span>
+                     <field-errors errors="errors.organisme"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.adresse"  ng-class="{'has-error': myForm.adresse.$dirty && myForm.adresse.$touched && myForm.adresse.$error.required}">
+                     <label for="adresse">Adresse</label>
+                     <input required ng-model="client.adresse" type="text" name="adresse" class="form-control" id="adresse">
+                     <span ng-show="myForm.adresse.$touched && myForm.adresse.$error.required" class="help-block">L'adresse est requise</span>
+                     <field-errors errors="errors.adresse"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.telephone" ng-class="{'has-error': myForm.telephone.$dirty && myForm.telephone.$touched && myForm.telephone.$error.required}">
+                     <label for="telephone">Téléphone</label>
+                     <input required ng-model="client.telephone" type="text" name="telephone" class="form-control" id="telephone">
+                     <span ng-show="myForm.telephone.$touched && myForm.telephone.$error.required" class="help-block">Le telephone est requis</span>
+                     <field-errors errors="errors.telephone"></field-errors>
+                  </div>
+                  <div class="col-md-4" has-error="errors.email" ng-class="{'has-error': myForm.email.$dirty && myForm.email.$touched && myForm.email.$error.required || myForm.email.$error.email}">
                      <label for="email">Email</label>
-                     <input ng-model="client.email" type="text" id="email" class="form-control">
-              </div>
+                     <input required ng-model="client.email" type="email" name="email" class="form-control" id="email">
+                     <span ng-show="myForm.email.$touched && myForm.email.$error.required" class="help-block">Un email valide est requis</span>
+                     <field-errors errors="errors.email"></field-errors>
+                  </div>
+               </div>
             </div>
-
-        </div>
-
-    </div>
- <div uib-accordion-group class="panel-default">
-      <uib-accordion-heading>
-        <strong>Informations sur la location</strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-      </uib-accordion-heading>
-  
- 
-
-        <div class="row">
-
-
-                <div class="col-md-4">
-                <label for="date_debut">Date début</label>
-                <p class="input-group" has-error="errors.date_debut">
-                    <input type="text" id="date_debut" class="form-control" datepicker-options="dateOptions" uib-datepicker-popup="{{format}}" ng-model="location.date_debut" is-open='popup1.opened' close-text="Fermer" />
-                    <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()" ><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-                </p>
-                <div class="has-error">
-                    <field-errors errors="errors.date_debut" first="true"></field-errors>
-                </div>
+            <div uib-accordion-group class="panel-default" is-open="true">
+               <uib-accordion-heading>
+                  <strong>Informations sur la location</strong> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+               </uib-accordion-heading>
+               <div class="row">
+                  <div class="col-md-4">
+                     <label for="date_debut">Date début</label>
+                     <p class="input-group" has-error="errors.date_debut">
+                        <input type="text" id="date_debut" class="form-control" datepicker-options="dateOptions" uib-datepicker-popup="{{format}}" ng-model="location.dateDebut" is-open='popup1.opened' close-text="Fermer" />
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open1()" ><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                     </p>
+                     <div class="has-error">
+                        <field-errors errors="errors.date_debut" first="true"></field-errors>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <label for="date_fin">Date de fin</label>
+                     <p class="input-group" has-error="errors.date_fin">
+                        <input type="text" id="date_fin" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="location.dateFin" is-open='popup2.opened' close-text="Fermer" />
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                     </p>
+                     <div class="has-error">
+                        <field-errors errors="errors.date_fin" first="true"></field-errors>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="form-group" has-error="errors.status">
+                        <label for="status">Status</label>
+                        <select ng-model="location.status" class="form-control" id="status">
+                           <option selected="selected" value="active">Active</option>
+                           <option  value="inactive">Innactive</option>
+                        </select>
+                        <field-errors errors="errors.organisme"></field-errors>
+                     </div>
+                  </div>
+               </div>
             </div>
-
-         <div class="col-md-4">
-                <label for="date_fin">Date de fin</label>
-                <p class="input-group" has-error="errors.date_fin">
-                    <input type="text" id="date_fin" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="location.date_fin" is-open='popup2.opened' close-text="Fermer" />
-                    <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-                </p>
-                <div class="has-error">
-                    <field-errors errors="errors.date_fin" first="true"></field-errors>
-                </div>
+         </uib-accordion>
+         <div class="text-center"><button ng-disabled="myForm.$invalid" ng-click="switch()" class="btn btn-primary btn-sx" type="button">Scan des matériels</button></div>
+      </form>
+   </div>
+   <div class="col-md-12" ng-show="!nextstep">
+      <div class="row">
+         <div class="col-md-6" has-error="errors.items">
+            <div class="input-group input-group-md">
+               <input ng-model="barcode" type="text" class="form-control input-md" id="codebare" placeholder="Saisir le code barre ou scanner un matériel">
+               <span class="input-group-btn">
+               <button ng-click="manualInsert()" class="btn btn-primary btn-md" type="submit">Valider</button>
+               </span>
             </div>
-
-
-          <div class="col-md-4">
-              <div class="form-group" has-error="errors.status">
-           <label for="status">Status</label>
-            <select ng-model="location.status" class="form-control" id="status">
-              <option value = "0">Finished</option>
-              <option value = "1">DRAFT</option>
-            </select>
-            <field-errors errors="errors.organisme"></field-errors>
-        </div>
-
-          </div>
-
-
-
-        </div>
-
-
-
-    </div>
-
-
-  </uib-accordion>
-
-
-
-      
-      
-        <center><input ng-click="save()" type="submit" value="Suivant" class="btn btn-success" ></center>
-
-    </form>
-</div>
-<div class="col-md-6">
-
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Quantité</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in cart.items">
-        <td>{{ item.nom }}</td>
-        <td>{{ item.qt }}</td>
-        <td class="text-right">
-          <button ng-click="removeItem($index)" class="btn btn-danger btn-xs">
-            <span class="glyphicon glyphicon-remove"></span>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-
- <div data-barcode-scanner="barcodeScanned"></div>
-    <div>
-      <!--  <span>Barcode:</span>-->
-        <span data-ng-bind="model.barcode"></span>
-    </div>
-
-    <span ng-bind="items"></span>
-
-    </form>
-</div>
-
-
-
+            <field-errors errors="errors.items"></field-errors>
+         </div>
+      </div>
+      <hr>
+      <table class="table table-striped table-hover">
+         <thead>
+            <tr>
+               <th>Nom</th>
+               <th>Quantité</th>
+               <th>Prix</th>
+               <th>Actions</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="item in cart.items">
+               <td ng-click="loadDetailForm(item)" >{{ item.nom }}</td>
+               <td>{{ item.qt }}</td>
+               <td>{{ item.prix_lot }} €</td>
+               <td>
+                  <button  ng-click="loadDetailForm(item)" class="btn btn-info btn-xs">
+                  <span  class="glyphicon glyphicon-info-sign"></span>
+                  </button>
+                  <button ng-click="removeItem(item)" class="btn btn-danger btn-xs">
+                  <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <div data-barcode-scanner="barcodeScanned">
+      </div>
+      <div>
+         <!--  <span>Barcode:</span>-->
+         <span data-ng-bind="model.barcode"></span>
+      </div>
+      <span ng-bind="items"></span>
+      <div class="well">
+         <h4>
+         Durée de la location : {{(location.dateFin - location.dateDebut)/1000/60/60/24 | number:0 }} jours </h3>
+         <h4>
+         Prix Total :  {{ price.total * ((location.dateFin - location.dateDebut)/1000/60/60/24 | number:0) }} €</h2>
+      </div>
+      <div class="text-center">
+         <button ng-click="switch()" class="btn btn-warning btn-sx" type="button">Retour à l'étape 1</button>
+         <button ng-click="save()" class="btn btn-primary btn-sx" type="button">Valider la location</button>
+      </div>
+      </form>
+   </div>
 </div>

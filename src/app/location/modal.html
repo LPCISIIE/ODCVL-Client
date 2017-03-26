@@ -1,0 +1,33 @@
+<div class="modal-header">
+    <button ng-click="$dismiss()" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">{{ nom }}</h4>
+</div>
+<div class="modal-body">
+    <table class="table">
+    <thead>
+      <tr>
+        <th>#Code</th>
+        <th>Prix</th>
+        <th>Remarques</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in listItems">
+      	<td>{{ item.barcode }}</td>
+        <td>{{ item.prix }} €</td>
+        <td>{{ item.remarques }}</td>
+      	<td>
+      		<button ng-click="remove(item)" class="btn btn-danger btn-xs">
+           		<span class="glyphicon glyphicon-remove"></span>
+         	</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-warning" ng-click="close()">Cancel</button>
+</div>
