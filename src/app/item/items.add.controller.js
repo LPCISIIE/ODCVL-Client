@@ -2,6 +2,10 @@
 export default function AddItemController ($scope, $state, $stateParams, BarcodeService, Item, Category, Product, CategoryProduct) {
   $scope.item = {
     code: '',
+    prix: '',
+    status: '',
+    reparations: '',
+    remarques: '',
     product_id: $stateParams.product_id
   }
 
@@ -15,7 +19,18 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
         allCategories.push(subCategory)
       })
     })
+    $scope.items = [{
+      id: 1,
+      status: 'Loué'
 
+    }, {
+      id: 2,
+      status: 'Disponible'
+    }, {
+      id: 3,
+      status: 'Indisponible'
+    }]
+    $scope.selected = $scope.items[0]
     allCategories.unshift({
       id: 0,
       name: 'Choisissez une catégorie'
@@ -62,12 +77,13 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
 
   $scope.displayBarCode = () => {
     BarcodeService.renderer('#barcode')
-      .EAN13($scope.item.code)
-      .render()
+        .EAN13($scope.item.code)
+        .render()
   }
 
   $scope.save = () => {
     $scope.item.purchased_at = $scope.formatDate($scope.item.purchased_at)
+    $scope.item.status = $scope.selected.status
     Item.save($scope.item, () => {
       $state.go('items.all')
     }, response => {

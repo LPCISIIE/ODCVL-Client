@@ -35,7 +35,44 @@
         </div>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group" has-error="errors.prix">
+          <label for="prix">Prix</label>
+          <input ng-model="item.prix" type="text" id="prix" class="form-control">
+          <field-errors errors="errors.prix"></field-errors>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+          <div class="col-md-6">
+              <div class="form-group" has-error="errors.status">
+                  <label for="status">Statut</label>
+                  <select id="status" ng-options="item as item.status for item in items track by item.id" ng-model="selected" class="form-control">
+                      <option value="">-- Sélectionner Statut --</option>
+                  </select>
+                  <field-errors errors="errors.status"></field-errors>
+              </div>
+          </div>
+      </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="reparations">Réparations Envisagées</label>
+          <textarea id="reparations" ng-model="item.reparations" class="form-control" rows="3">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="remarques">Remarques</label>
+          <textarea id="remarques" ng-model="item.remarques" class="form-control" rows="3">
+          </textarea>
+        </div>
+      </div>
+    </div>
     <hr>
     <h3>Matériel</h3>
 
@@ -63,26 +100,26 @@
 
     <table class="table table-striped table-hover">
       <thead>
-        <tr>
-          <th>#</th>
-          <th>Nom</th>
-          <th>Catégorie</th>
-          <th class="text-right">Sélectionner</th>
-        </tr>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Catégorie</th>
+        <th class="text-right">Sélectionner</th>
+      </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="product in products | filter : search">
-          <th>{{ product.id }}</th>
-          <td>{{ product.name }}</td>
-          <td>{{ product.categories[0].name }}</td>
-          <td class="text-right">
-            <div class="btn-group">
-              <label ng-change="updateFilter(product)" ng-class="{ active: item.product_id == product.id }" class="btn btn-primary btn-sm" ng-model="item.product_id" uib-btn-radio="product.id">
-                {{ item.product_id == product.id ? 'Sélectionné' : 'Sélectionner' }}
-              </label>
-            </div>
-          </td>
-        </tr>
+      <tr ng-repeat="product in products | filter : search">
+        <th>{{ product.id }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.categories[0].name }}</td>
+        <td class="text-right">
+          <div class="btn-group">
+            <label ng-change="updateFilter(product)" ng-class="{ active: item.product_id == product.id }" class="btn btn-primary btn-sm" ng-model="item.product_id" uib-btn-radio="product.id">
+              {{ item.product_id == product.id ? 'Sélectionné' : 'Sélectionner' }}
+            </label>
+          </div>
+        </td>
+      </tr>
       </tbody>
     </table>
     <div class="has-error">

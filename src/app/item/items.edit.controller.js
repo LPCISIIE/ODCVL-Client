@@ -3,11 +3,14 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
   Item.get({ id: $stateParams.id }, item => {
     item.purchased_at = new Date(item.purchased_at)
     $scope.item = item
+    $scope.itemSelected = item
     $scope.displayBarCode()
   })
 
   $scope.category_id = 0
-
+  Item.query(items => {
+    $scope.items = items
+  })
   Category.query(categories => {
     let allCategories = []
     categories.forEach(category => {
@@ -16,15 +19,12 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
         allCategories.push(subCategory)
       })
     })
-
     allCategories.unshift({
       id: 0,
       name: 'Choisissez une catégorie'
     })
-
     $scope.categories = allCategories
   })
-
   Product.query(products => {
     $scope.products = products
   })
@@ -54,12 +54,13 @@ export default function AddItemController ($scope, $state, $stateParams, Barcode
 
   $scope.displayBarCode = () => {
     BarcodeService.renderer('#barcode')
-      .EAN13($scope.item.code)
-      .render()
+            .EAN13($scope.item.code)
+            .render()
   }
 
   $scope.save = () => {
     $scope.item.purchased_at = $scope.formatDate($scope.item.purchased_at)
+    $scope.item.status = $scope.itemSelected.status
     Item.update($scope.item, () => {
       $state.go('items.all')
     }, response => {
