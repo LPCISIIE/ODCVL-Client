@@ -51,6 +51,7 @@ import AddLocationController from './app/location/locations.add.controller'
 import EditLocationController from './app/location/locations.edit.controller'
 import EditFicheLocationController from './app/location/location.fiche.controller'
 import ModalController from './app/location/modal.controller'
+
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
