@@ -39,6 +39,7 @@ import ClientsController from './app/client/clients.controller'
 import AddClientController from './app/client/clients.add.controller'
 import EditClientController from './app/client/clients.edit.controller'
 import ProductsController from './app/product/products.controller'
+import EditStockController from './app/stock/stock.edit.controller'
 import AddProductController from './app/product/products.add.controller'
 import EditProductController from './app/product/products.edit.controller'
 import ItemsController from './app/item/items.controller'
@@ -80,6 +81,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .controller('ProductsCtrl', ProductsController)
   .controller('AddProductCtrl', AddProductController)
   .controller('EditProductCtrl', EditProductController)
+  .controller('EditStockCtrl', EditStockController)
   .controller('ItemsCtrl', ItemsController)
   .controller('AddItemCtrl', AddItemController)
   .controller('EditItemCtrl', EditItemController)

@@ -80,6 +80,16 @@ export default function route ($stateProvider) {
       template: require('./app/product/products.edit.html'),
       controller: 'EditProductCtrl'
     })
+    .state('stock', {
+      abstract: true,
+      url: '/stock'/* ,
+         onEnter: AuthMiddleware */
+    })
+    .state('stock.all', {
+      url: '',
+      template: require('./app/stock/stock.edit.html'),
+      controller: 'EditStockCtrl'
+    })
     .state('items', {
       abstract: true,
       url: '/items'/* ,
