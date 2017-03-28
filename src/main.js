@@ -18,6 +18,7 @@ import BarcodeService from './app/item/barcode.service'
 import User from './app/user/user'
 import Category from './app/category/category'
 import CategoryProduct from './app/category/category.product'
+import LocationItem from './app/location/location.items'
 import Product from './app/product/product'
 import Item from './app/item/item'
 import Client from './app/client/client'
@@ -48,6 +49,7 @@ import EditItemController from './app/item/items.edit.controller'
 import LocationController from './app/location/locations.controller'
 import AddLocationController from './app/location/locations.add.controller'
 import EditLocationController from './app/location/locations.edit.controller'
+import EditFicheLocationController from './app/location/location.fiche.controller'
 import ModalController from './app/location/modal.controller'
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
@@ -61,6 +63,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .config(config)
   .factory('Category', Category)
   .factory('CategoryProduct', CategoryProduct)
+  .factory('LocationItem', LocationItem)
   .factory('Product', Product)
   .factory('Item', Item)
   .factory('Client', Client)
@@ -89,6 +92,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .controller('LocationController', LocationController)
   .controller('AddLocationController', AddLocationController)
   .controller('EditLocationCtrl', EditLocationController)
+  .controller('EditFicheLocationCtrl', EditFicheLocationController)
   .controller('ModalController', ModalController)
   .run(['$transitions', $transitions => {
     $transitions.onSuccess({}, trans => {

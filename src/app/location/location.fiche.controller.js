@@ -1,5 +1,5 @@
 
-export default function EditLocationController ($scope, $state, $stateParams, Location, LocationItem, Client, Item, FlashService) {
+export default function EditFicheLocationController ($scope, $state, $stateParams, Location, LocationItem, Client, Item, FlashService) {
   let clientId
   let allItems1 = []
   let allItems = []
@@ -19,8 +19,8 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
         }
       })
     })
-    Item.query(items3 => {
-      items3.forEach(item => {
+    Item.query(items => {
+      items.forEach(item => {
         allItems1.forEach(item2 => {
           if (item2.id === item.id) {
             allItems.push(item)
@@ -28,7 +28,7 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
         })
       })
     })
-    $scope.articles = allItems
+    $scope.items = allItems
   })
 
   $scope.popup1 = {
@@ -49,6 +49,7 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
     minDate: new Date(),
     startingDay: 1
   }
+
   $scope.formatDate = (date) => {
     if (date) {
       return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
@@ -71,4 +72,5 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
     })
   }
 }
-EditLocationController.$inject = ['$scope', '$state', '$stateParams', 'Location', 'Client', 'Item', 'FlashService']
+
+EditFicheLocationController.$inject = ['$scope', '$state', '$stateParams', 'Location', 'LocationItem', 'Client', 'Item', 'FlashService']

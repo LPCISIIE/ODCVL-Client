@@ -131,6 +131,11 @@ export default function route ($stateProvider) {
       template: require('./app/location/locations.edit.html'),
       controller: 'EditLocationCtrl'
     })
+    .state('locations.fiche', {
+      url: '/:id/fiche',
+      template: require('./app/location/location.fiche.html'),
+      controller: 'EditFicheLocationCtrl'
+    })
      .state('locations.delete', {
        url: '/:id/delete',
        template: require('./app/location/locations.html'),
