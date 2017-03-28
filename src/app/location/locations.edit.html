@@ -15,32 +15,32 @@
                     <div class="row" >
                         <div class="col-md-4" has-error="errors.nom" >
                             <label for="nom">Nom</label>
-                            <input required ng-model="client.nom" type="text" name="nom" class="form-control" id="nom">
+                            <input required ng-model="client2.nom" type="text" name="nom" class="form-control" id="nom">
                             <field-errors errors="errors.nom"></field-errors>
                         </div>
                         <div class="col-md-4" has-error="errors.prenom" ng-class="{'has-error': myForm.prenom.$dirty && myForm.prenom.$touched && myForm.prenom.$error.required}">
                             <label for="prenom">Prénom</label>
-                            <input required ng-model="client1.prenom" type="text" name="prenom" class="form-control" id="prenom">
+                            <input required ng-model="client2.prenom" type="text" name="prenom" class="form-control" id="prenom">
                             <field-errors errors="errors.prenom"></field-errors>
                         </div>
                         <div class="col-md-4" has-error="errors.organisme"  ng-class="{'has-error': myForm.organisme.$dirty && myForm.organisme.$organisme && myForm.organisme.$error.required}">
                             <label for="organisme">Organisme</label>
-                            <input required ng-model="client1.organisme" type="text" name="organisme" class="form-control" id="organisme">
+                            <input required ng-model="client2.organisme" type="text" name="organisme" class="form-control" id="organisme">
                             <field-errors errors="errors.organisme"></field-errors>
                         </div>
                         <div class="col-md-4" has-error="errors.adresse"  ng-class="{'has-error': myForm.adresse.$dirty && myForm.adresse.$touched && myForm.adresse.$error.required}">
                             <label for="adresse">Adresse</label>
-                            <input required ng-model="client1.adresse" type="text" name="adresse" class="form-control" id="adresse">
+                            <input required ng-model="client2.adresse" type="text" name="adresse" class="form-control" id="adresse">
                             <field-errors errors="errors.adresse"></field-errors>
                         </div>
                         <div class="col-md-4" has-error="errors.telephone" ng-class="{'has-error': myForm.telephone.$dirty && myForm.telephone.$touched && myForm.telephone.$error.required}">
                             <label for="telephone">Téléphone</label>
-                            <input required ng-model="client1.telephone" type="text" name="telephone" class="form-control" id="telephone">
+                            <input required ng-model="client2.telephone" type="text" name="telephone" class="form-control" id="telephone">
                             <field-errors errors="errors.telephone"></field-errors>
                         </div>
                         <div class="col-md-4" has-error="errors.email" ng-class="{'has-error': myForm.email.$dirty && myForm.email.$touched && myForm.email.$error.required || myForm.email.$error.email}">
                             <label for="email">Email</label>
-                            <input required ng-model="client1.email" type="email" name="email" class="form-control" id="email">
+                            <input required ng-model="client2.email" type="email" name="email" class="form-control" id="email">
                             <field-errors errors="errors.email"></field-errors>
                         </div>
                     </div>
@@ -101,15 +101,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="item in articles" >
-                                <td>{{ item.code }}</td>
-                                <td>{{ item.status }}</td>
-                                <td >{{ item.product.prix }} €</td>
+                            <tr ng-repeat="item1 in articles" >
+                                <td>{{ item1.code }}</td>
+                                <td>{{ item1.status }}</td>
+                                <td >{{ item1.product.prix }} €</td>
                                 <td>
-                                    <button  ng-click="loadDetailForm(item)" class="btn btn-info btn-xs">
+                                    <button  ng-click="loadDetailForm(item1)" class="btn btn-info btn-xs">
                                         <span  class="glyphicon glyphicon-info-sign"></span>
                                     </button>
-                                    <button ng-click="removeItem(item)" class="btn btn-danger btn-xs">
+                                    <button ng-click="removeItem(item1)" class="btn btn-danger btn-xs">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </button>
                                 </td>

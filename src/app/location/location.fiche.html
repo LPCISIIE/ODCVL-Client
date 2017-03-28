@@ -132,10 +132,10 @@
             <div class="panel-heading">Totaux</div>
             <div class="panel-body">
                 <div class="well">
-                    <h4>
-                        Durée de la location : {{(location.date_fin - location.date_debut)/1000/60/60/24 | number:0 }} jours </h3>
-                    </h4>
-                    Prix Total :  {{ location.prix  }} €</h2>
+                    <h4 ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  < 1.5"> Durée de la location : 1 journée </h4>
+                    <h4 ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  > 1.5"> Durée de la location : {{(location.date_fin - location.date_debut)/1000/60/60/24 | number:0 }} jours </h4>
+                    <h2 ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  === 0"> Prix Total :  {{ location.prix }} €</h2>
+                    <h2 ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  !== 0"> Prix Total :  {{ location.prix  }} €</h2>
                 </div>
             </div>
         </div>
