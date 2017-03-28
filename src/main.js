@@ -14,6 +14,7 @@ import JWTService from './app/authentication/jwt.service'
 import AuthService from './app/authentication/authentication.service'
 import FlashService from './app/authentication/flash.service'
 import BarcodeService from './app/item/barcode.service'
+import JsPdf from './app/pdf/jspdf'
 
 import User from './app/user/user'
 import Category from './app/category/category'
@@ -61,6 +62,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .service('FlashService', FlashService)
   .service('AuthService', AuthService)
   .service('BarcodeService', BarcodeService)
+  .factory('JsPdf', JsPdf)
   .config(config)
   .factory('Category', Category)
   .factory('CategoryProduct', CategoryProduct)
