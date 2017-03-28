@@ -18,6 +18,7 @@
     <topbar></topbar>
       <div ng-if="flash">
       <div class="container">
+        <hr/>
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-bind="flash.message"></div>
       </div>
     </div>

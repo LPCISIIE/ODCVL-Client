@@ -15,7 +15,7 @@ export default function EditLocationController ($scope, $state, $stateParams, Lo
       $scope.clients = clients
       clients.forEach(client => {
         if (client.id === clientId) {
-          $scope.client = client
+          $scope.client2 = client
         }
       })
     })

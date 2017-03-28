@@ -89,13 +89,16 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
       $scope.barcode = ''
     }, function () {
       FlashService.Error('Item Introuvable', 500, true)
+      $scope.barcode = ''
     })
   }
   $scope.barcodeScanned = (barcode) => {
     Item.getbyCode({ id: barcode }, function (data) {
       addItem(data)
+      $scope.barcode = ''
     }, function () {
       FlashService.Error('Item Introuvable', 500, true)
+      $scope.barcode = ''
     })
   }
 
@@ -107,7 +110,7 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
   loadUsers()
   let addItem = (item) => {
     if (checkDuplicateItem(item.id) === true) {
-      FlashService.Success('Item déja existant', 500, true)
+      FlashService.Error('Item déja existant', 500, true)
       return 0
     }
     if (item.status !== 'disponible') {
@@ -132,6 +135,7 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
         barcode: item.code
       })
       $scope.price.total = parseFloat(item.product.prix) + parseFloat($scope.price.total)
+      FlashService.Success('Item ajouté au panier', 500, true)
     } else {
       let it = $scope.cart.items[$scope.cart.items.indexOf(currentItem)]
       it.qt ++
@@ -144,6 +148,7 @@ export default function AddLocationController ($scope, $state, Client, FlashServ
         barcode: item.code
       })
       $scope.price.total = parseFloat(item.product.prix) + parseFloat($scope.price.total)
+      FlashService.Success('Item ajouté au panier', 500, true)
     }
   }
   $scope.removeItem = (index) => {
