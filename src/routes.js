@@ -141,4 +141,9 @@ export default function route ($stateProvider) {
        template: require('./app/location/locations.html'),
        controller: 'LocationController'
      })
+     .state('barcodes', {
+       url: '/barcodes',
+       template: require('./app/barcode/barcode.html'),
+       controller: 'BarCodePrinter'
+     })
 }

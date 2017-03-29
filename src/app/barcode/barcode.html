@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="page-header text-center">
+    <h1>{{ zak }}</h1>
+  </div>
+
+  <div class="input-group" has-error="errors.code">
+          <input ng-change="displayBarCode()" ng-model="item.code" type="text" id="code" class="form-control">
+          <div class="input-group-btn">
+            <button ng-click="generateBarCode()" class="btn btn-default">Générer code barre</button>
+          </div>
+        </div>
+
+<button ng-click="addItem()" type="button" class="btn btn-primary">Primary</button>
+
+   <div id="moncode">
+   	<img class="pull-right" id="barcode" />
+   </div>
+
+</div>

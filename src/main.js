@@ -51,6 +51,7 @@ import AddLocationController from './app/location/locations.add.controller'
 import EditLocationController from './app/location/locations.edit.controller'
 import EditFicheLocationController from './app/location/location.fiche.controller'
 import ModalController from './app/location/modal.controller'
+import BarCodePrinter from './app/barcode/barcode.controller'
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
     url: 'http://localhost/ODCVL/public'
@@ -94,6 +95,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .controller('EditLocationCtrl', EditLocationController)
   .controller('EditFicheLocationCtrl', EditFicheLocationController)
   .controller('ModalController', ModalController)
+  .controller('BarCodePrinter', BarCodePrinter)
   .run(['$transitions', $transitions => {
     $transitions.onSuccess({}, trans => {
       if (trans.injector().get('JWTService').getAccessToken()) {
