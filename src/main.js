@@ -34,6 +34,7 @@ import BarcodeScannerDirective from './app/location/barcodeScanner'
 import LoginController from './app/authentication/login.controller'
 import RegisterController from './app/authentication/register.controller'
 import HomeController from './app/home/home.controller'
+import UsersController from './app/user/users.controller'
 import CategoriesController from './app/category/categories.controller'
 import AddCategoryController from './app/category/categories.add.controller'
 import EditCategoryController from './app/category/categories.edit.controller'
@@ -56,7 +57,7 @@ import BarCodePrinter from './app/barcode/barcode.controller'
 
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
-    url: 'http://localhost/ODCVL/public'
+    url: 'http://localhost/private/ODCVL/public'
   })
   .factory('User', User)
   .service('JWTService', JWTService)
@@ -80,6 +81,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .controller('LoginCtrl', LoginController)
   .controller('RegisterCtrl', RegisterController)
   .controller('HomeCtrl', HomeController)
+  .controller('UsersCtrl', UsersController)
   .controller('CategoriesCtrl', CategoriesController)
   .controller('AddCategoryCtrl', AddCategoryController)
   .controller('EditCategoryCtrl', EditCategoryController)

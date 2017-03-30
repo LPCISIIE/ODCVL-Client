@@ -17,6 +17,14 @@ export default function User ($resource, API) {
     refresh: {
       method: 'POST',
       url: API.url + '/auth/refresh'
+    },
+    promote: {
+      method: 'PUT',
+      url: API.url + '/users/:id/promote'
+    },
+    demote: {
+      method: 'PUT',
+      url: API.url + '/users/:id/demote'
     }
   })
 }

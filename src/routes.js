@@ -1,5 +1,5 @@
 import GuestMiddleware from './middleware/guest.middleware'
-// import AuthMiddleware from './middleware/auth.middleware'
+import AuthMiddleware from './middleware/auth.middleware'
 
 export default function route ($stateProvider) {
   $stateProvider
@@ -20,10 +20,20 @@ export default function route ($stateProvider) {
       controller: 'RegisterCtrl',
       onEnter: GuestMiddleware
     })
+    .state('users', {
+      abstract: true,
+      url: '/users',
+      onEnter: AuthMiddleware
+    })
+    .state('users.all', {
+      url: '',
+      template: require('./app/user/users.html'),
+      controller: 'UsersCtrl'
+    })
     .state('categories', {
       abstract: true,
-      url: '/categories'/* ,
-       onEnter: AuthMiddleware */
+      url: '/categories',
+      onEnter: AuthMiddleware
     })
     .state('categories.all', {
       url: '',
@@ -42,8 +52,8 @@ export default function route ($stateProvider) {
     })
     .state('clients', {
       abstract: true,
-      url: '/clients'/* ,
-       onEnter: AuthMiddleware */
+      url: '/clients',
+      onEnter: AuthMiddleware
     })
     .state('clients.all', {
       url: '',
@@ -62,8 +72,8 @@ export default function route ($stateProvider) {
     })
     .state('products', {
       abstract: true,
-      url: '/products'/* ,
-       onEnter: AuthMiddleware */
+      url: '/products',
+      onEnter: AuthMiddleware
     })
     .state('products.all', {
       url: '',
@@ -82,8 +92,8 @@ export default function route ($stateProvider) {
     })
     .state('stock', {
       abstract: true,
-      url: '/stock'/* ,
-         onEnter: AuthMiddleware */
+      url: '/stock',
+      onEnter: AuthMiddleware
     })
     .state('stock.all', {
       url: '',
@@ -92,8 +102,8 @@ export default function route ($stateProvider) {
     })
     .state('items', {
       abstract: true,
-      url: '/items'/* ,
-       onEnter: AuthMiddleware */
+      url: '/items',
+      onEnter: AuthMiddleware
     })
     .state('items.all', {
       url: '',
@@ -114,7 +124,8 @@ export default function route ($stateProvider) {
     })
     .state('locations', {
       abstract: true,
-      url: '/locations'
+      url: '/locations',
+      onEnter: AuthMiddleware
     })
     .state('locations.all', {
       url: '',
@@ -136,14 +147,14 @@ export default function route ($stateProvider) {
       template: require('./app/location/location.fiche.html'),
       controller: 'EditFicheLocationCtrl'
     })
-     .state('locations.delete', {
-       url: '/:id/delete',
-       template: require('./app/location/locations.html'),
-       controller: 'LocationController'
-     })
-     .state('barcodes', {
-       url: '/barcodes',
-       template: require('./app/barcode/barcode.html'),
-       controller: 'BarCodePrinter'
-     })
+   .state('locations.delete', {
+     url: '/:id/delete',
+     template: require('./app/location/locations.html'),
+     controller: 'LocationController'
+   })
+   .state('barcodes', {
+     url: '/barcodes',
+     template: require('./app/barcode/barcode.html'),
+     controller: 'BarCodePrinter'
+   })
 }
