@@ -14,7 +14,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" ng-if="user">
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown">Locations<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -46,6 +46,10 @@
             <li><a href="">Liste</a></li>
           </ul>
         </li>
+
+        <li>
+          <a ui-sref="users.all">Utilisateurs</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
@@ -55,7 +59,7 @@
           <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="">Profil</a></li>
-            <li><a ng-click="logout()">Déconnexion</a></li>
+            <li><a href="" ng-click="logout()">Déconnexion</a></li>
           </ul>
         </li>
       </ul>
