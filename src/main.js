@@ -30,6 +30,7 @@ import FieldErrorsDirective from './app/common/field-errors.directive'
 import HasErrorDirective from './app/common/has-error.directive'
 import datepickerPopupDirective from './app/common/datepickerPopupDirective'
 import BarcodeScannerDirective from './app/location/barcodeScanner'
+import PaginationDirective from './app/common/pagination.directive'
 
 import LoginController from './app/authentication/login.controller'
 import RegisterController from './app/authentication/register.controller'
@@ -78,6 +79,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .directive('hasError', HasErrorDirective)
   .directive('barcodeScanner', BarcodeScannerDirective)
   .directive('datepickerPopup', datepickerPopupDirective)
+  .directive('pagination', PaginationDirective)
   .controller('LoginCtrl', LoginController)
   .controller('RegisterCtrl', RegisterController)
   .controller('HomeCtrl', HomeController)

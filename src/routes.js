@@ -36,7 +36,7 @@ export default function route ($stateProvider) {
       onEnter: AuthMiddleware
     })
     .state('categories.all', {
-      url: '',
+      url: '?page',
       template: require('./app/category/categories.html'),
       controller: 'CategoriesCtrl'
     })
@@ -56,7 +56,7 @@ export default function route ($stateProvider) {
       onEnter: AuthMiddleware
     })
     .state('clients.all', {
-      url: '',
+      url: '?page',
       template: require('./app/client/clients.html'),
       controller: 'ClientsCtrl'
     })
@@ -76,7 +76,7 @@ export default function route ($stateProvider) {
       onEnter: AuthMiddleware
     })
     .state('products.all', {
-      url: '',
+      url: '?page',
       template: require('./app/product/products.html'),
       controller: 'ProductsCtrl'
     })
@@ -106,7 +106,7 @@ export default function route ($stateProvider) {
       onEnter: AuthMiddleware
     })
     .state('items.all', {
-      url: '',
+      url: '?page',
       template: require('./app/item/items.html'),
       controller: 'ItemsCtrl'
     })
@@ -128,7 +128,7 @@ export default function route ($stateProvider) {
       onEnter: AuthMiddleware
     })
     .state('locations.all', {
-      url: '',
+      url: '?page',
       template: require('./app/location/locations.html'),
       controller: 'LocationController'
     })
