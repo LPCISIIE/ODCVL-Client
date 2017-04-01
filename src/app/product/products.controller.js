@@ -1,9 +1,15 @@
 
-export default function ProductsController ($scope, Product, Category, CategoryProduct) {
+export default function ProductsController ($scope, $state, $stateParams, Product, Category, CategoryProduct) {
+  const ITEMS_PER_PAGE = 3
+
+  $scope.page = !isNaN($stateParams.page) ? parseInt($stateParams.page) : 1
+  $scope.url = $state.href('products.all', { page: '' })
+
   $scope.category_id = 0
 
-  Product.query(products => {
+  Product.query({ page: $scope.page }, (products, headers) => {
     $scope.products = products
+    $scope.pages = Math.ceil(headers('content-range').split('/')[1] / ITEMS_PER_PAGE)
   })
 
   Category.query(categories => {
@@ -31,11 +37,12 @@ export default function ProductsController ($scope, Product, Category, CategoryP
 
   $scope.delete = (product) => {
     Product.delete(product, () => {
-      Product.query(products => {
+      Product.query({ page: $scope.page }, (products, headers) => {
         $scope.products = products
+        $scope.pages = Math.ceil(headers('content-range').split('/')[1] / ITEMS_PER_PAGE)
       })
     })
   }
 }
 
-ProductsController.$inject = ['$scope', 'Product', 'Category', 'CategoryProduct']
+ProductsController.$inject = ['$scope', '$state', '$stateParams', 'Product', 'Category', 'CategoryProduct']
