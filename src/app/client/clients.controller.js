@@ -3,7 +3,7 @@ export default function ClientsController ($scope, $state, $stateParams, Client,
   const ITEMS_PER_PAGE = 3
 
   $scope.page = !isNaN($stateParams.page) ? parseInt($stateParams.page) : 1
-  $scope.url = $state.href('items.all', { page: '' })
+  $scope.url = $state.href('clients.all', { page: '' })
 
   Client.query({ page: $scope.page }, (clients, headers) => {
     $scope.clients = clients
