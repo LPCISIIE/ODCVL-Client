@@ -60,7 +60,7 @@ import BarCodePrinter from './app/barcode/barcode.controller'
 
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
   .constant('API', {
-    url: 'http://localhost/true/ODCVL/public'
+    url: 'http://localhost/ODCVL-Server/public'
   })
   .factory('User', User)
   .service('JWTService', JWTService)
