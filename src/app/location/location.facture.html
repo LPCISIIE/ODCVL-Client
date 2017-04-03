@@ -1,0 +1,118 @@
+<hr>
+<div class="text-center">
+   <button ng-click="save()" href="#" class="btn btn-primary">Télécharger la facture</button>
+   <button ng-click="print()" href="#" class="btn btn-info">Imprimer la facture</button>
+</div>
+<hr>
+<div id="container" class="container" style="background-color:white;padding-left:20px;padding-right:20px">
+   <div class="row" ng-repeat="_ in [ [ search, items ] ]" ng-init="total = 0">
+      <div class="col-xs-6">
+         <h1>
+            <img src="src/assets/img/odcvl.png"> 
+         </h1>
+      </div>
+      <div class="col-xs-6 text-right">
+         <h1>Facture</h1>
+         <h3><small>Facure numéro : {{ location.id }} </small></h3>
+         <h4><small>Date de facturation : {{location.created_at | date:'dd/MM/yyyy'}}</small></h4>
+      </div>
+      <hr>
+      <div class="row">
+         <div class="col-xs-5">
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h4>Facture destinée à : {{ client.nom + ' ' + client.prenom }}</h4>
+               </div>
+               <div class="panel-body">
+                  <p>
+                     {{ client.organisme }} <br>
+                     {{ client.adresse }}  <br>
+                  </p>
+               </div>
+            </div>
+         </div>
+         <div class="col-xs-5 col-xs-offset-2 text-right">
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <h4>Emise par: ODCVL</h4>
+               </div>
+               <div class="panel-body">
+                  <p>
+                     Parc d'Activités de la Roche<br>
+                     38 Allée des Rapailles, 88000 Épinal 
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <table class="table table-bordered">
+         <thead>
+            <tr>
+               <th class="text-center">
+                  <h4>#</h4>
+               </th>
+               <th class="text-center">
+                  <h4>Produit</h4>
+               </th>
+               <th class="text-center">
+                  <h4>Quantité</h4>
+               </th>
+               <th class="text-center">
+                  <h4>Prix de location / jour</h4>
+               </th>
+               <th class="text-center" >
+                  <h4>Prix Net</h4>
+               </th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="item in items">
+               <td class="text-center">{{$index + 1}}</td>
+               <td class="text-center">{{ item.product.name }}</td>
+               <td class="text-center">{{ item.qt }}</td>
+               <td class="text-center">{{ item.product.prix}} €</td>
+               <td ng-init="$parent.total = $parent.total + (item.product.prix * item.qt)" class="text-center">{{ item.qt * item.product.prix }} €</td>
+            </tr>
+         </tbody>
+      </table>
+      <div id="zakaria" class="row text-right">
+         <div class="col-xs-2 col-xs-offset-8">
+            <p>
+               <strong>
+               Total par jour : <br> Durée :<br>
+               Total :<br>
+               </strong>
+            </p>
+         </div>
+         <div class="col-xs-2">
+            <strong>
+            <span> {{ total }} € </span><br>
+            <span ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  < 1.5">1 journée</span>
+            <span ng-if= "(location.date_fin - location.date_debut)/1000/60/60/24  > 1.5">{{ (location.date_fin - location.date_debut)/1000/60/60/24 }} jours</span>
+            <br>
+            {{ location.prix }} €
+            </strong>
+         </div>
+      </div>
+      <div class="row">
+         <div class="text-center">
+            <div class="col-xs-7 col-xs-offset-3">
+               <div class="span7">
+                  <div class="panel panel-info">
+                     <div class="panel-heading">
+                        <h4>Nous contacter</h4>
+                     </div>
+                     <div class="panel-body">
+                        <p>
+                           Email : contact@odcvl.com <br><br>
+                           Mobile : +33123456789 <br> <br>
+                           www.odcvl.org
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

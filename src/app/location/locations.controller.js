@@ -1,6 +1,6 @@
 
 export default function LocationController ($scope, $state, $stateParams, Location, uiGridConstants, FlashService) {
-  const ITEMS_PER_PAGE = 3
+  const ITEMS_PER_PAGE = 20
 
   $scope.page = !isNaN($stateParams.page) ? parseInt($stateParams.page) : 1
   $scope.url = $state.href('locations.all', { page: '' })
