@@ -15,6 +15,7 @@ import AuthService from './app/authentication/authentication.service'
 import FlashService from './app/authentication/flash.service'
 import BarcodeService from './app/item/barcode.service'
 import JsPdf from './app/pdf/jspdf'
+import html2canvas from './app/pdf/html2canvas'
 
 import User from './app/user/user'
 import Category from './app/category/category'
@@ -54,6 +55,7 @@ import AddLocationController from './app/location/locations.add.controller'
 import EditLocationController from './app/location/locations.edit.controller'
 import EditFicheLocationController from './app/location/location.fiche.controller'
 import ModalController from './app/location/modal.controller'
+import FactureController from './app/location/location.facture.controller'
 import BarCodePrinter from './app/barcode/barcode.controller'
 
 export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiSelect, ngSanitize])
@@ -66,6 +68,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .service('AuthService', AuthService)
   .service('BarcodeService', BarcodeService)
   .factory('JsPdf', JsPdf)
+  .factory('html2canvas', html2canvas)
   .config(config)
   .factory('Category', Category)
   .factory('CategoryProduct', CategoryProduct)
@@ -101,6 +104,7 @@ export default angular.module('app', [resource, router, uiBootstrap, uiGrid, uiS
   .controller('AddLocationController', AddLocationController)
   .controller('EditLocationCtrl', EditLocationController)
   .controller('EditFicheLocationCtrl', EditFicheLocationController)
+  .controller('FactureLocationCtrl', FactureController)
   .controller('ModalController', ModalController)
   .controller('BarCodePrinter', BarCodePrinter)
   .run(['$transitions', $transitions => {

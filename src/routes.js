@@ -152,6 +152,11 @@ export default function route ($stateProvider) {
      template: require('./app/location/locations.html'),
      controller: 'LocationController'
    })
+   .state('locations.facture', {
+     url: '/:id/facture',
+     template: require('./app/location/location.facture.html'),
+     controller: 'FactureLocationCtrl'
+   })
    .state('barcodes', {
      url: '/barcodes',
      template: require('./app/barcode/barcode.html'),
