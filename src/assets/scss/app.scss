@@ -2,6 +2,10 @@
 @import "table";
 @import "ui_bootstrap";
 
+body {
+  padding-bottom: 200px;
+}
+
 .navbar {
   margin-bottom: unset !important;
 }
